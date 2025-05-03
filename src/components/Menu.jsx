@@ -19,10 +19,11 @@ const MenuContainer = styled.div`
   top: 90px;
   right: 10px;
   z-index: 1000;
+  
 
 
   @media(max-width:768px){
-    top:10px;
+    top:25px;
 
     span{
         display:none;
@@ -58,6 +59,7 @@ const Dropdown = styled.ul`
   position: absolute;
   top: 50px;
   right: 0;
+  // background:rgba(255,255,255,0.5);
   background: white;
   width: 200px;
   border-radius: 10px;
@@ -90,8 +92,6 @@ const MenuItem = styled.li`
 const menuItems = [
   { name: "🏠 Home", link: "/" },
   { name: "ℹ️ About Us", link: "/aboutus" },
-  { name: "🛡️ Our Recognition", link: "/authenticity" },
-  {name:"🏛️ INEC Engagement" , link:"/inecengagement"},
   { name: "🖼️ Gallery", link: "/gallery" },
   { name: "💖 Donate", link: "/donate" },
     { name: "📚 Blogs", link: "/blogs" },

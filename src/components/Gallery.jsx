@@ -419,12 +419,18 @@ import styled, { keyframes } from "styled-components";
 import { FaTimes } from "react-icons/fa";
 
 // Image Imports
-import img1 from "../Images/im1.jpeg";
-import img2 from "../Images/im3.jpeg";
-import img3 from "../Images/im4.jpeg";
-import img4 from "../Images/im6.jpeg";
-import img5 from "../Images/launch.jpeg";
-import img6 from "../Images/election.jpeg";
+import im3 from '../Images2/im3.jpeg';
+import im4 from '../Images2/im4.jpeg';
+import im5 from '../Images2/im5.jpeg';
+import im6 from '../Images2/im6.jpeg';
+import im7 from '../Images2/im7.jpeg';
+import im8 from '../Images2/im8.jpeg';
+import im9 from '../Images2/im9.jpeg';
+import im10 from '../Images2/im10.jpeg';
+import im11 from '../Images2/im11.jpeg';
+import im12 from '../Images2/im12.jpeg';
+import im13 from '../Images2/im13.jpeg';
+import im14 from '../Images2/im14.jpeg';
 import Hero4 from "./Hero4";
 
 // Floating Animation
@@ -444,7 +450,7 @@ const rotate = keyframes`
 const GalleryWrapper = styled.div`
   position: relative;
 //   background: linear-gradient(135deg, #ece9e6, #ffffff);
-background:lightgray;
+background:rgba(0,0,255,0.1);
   padding: 80px 20px;
   text-align: center;
   overflow: hidden;
@@ -539,7 +545,7 @@ const GalleryItem = styled.div`
   cursor: pointer;
   overflow: hidden;
   border-radius: ${(props) => props.border || "10px"};
-  border: ${(props) => props.border || "10px"} solid rgba(0, 0, 255, 0.5); /* 🔵 Single Blue Border */
+  border: ${(props) => props.border || "10px"} solid #000050; /* 🔵 Single Blue Border */
   grid-column: ${(props) => props.columnSpan || "span 1"};
   grid-row: ${(props) => props.rowSpan || "span 1"};
 
@@ -571,12 +577,15 @@ const LightboxOverlay = styled.div`
   align-items: center;
   justify-content: center;
   z-index: 999;
+  overflow:scroll;
 `;
 
 const LightboxContent = styled.div`
   position: relative;
   max-width: 80%;
   max-height: 80%;
+  width:80%;
+  height:80%;
 `;
 
 const LightboxImage = styled.img`
@@ -586,16 +595,16 @@ const LightboxImage = styled.img`
 `;
 
 const CloseButton = styled.button`
-  position: absolute;
-  top: -30px;
-  right: -30px;
+  position: fixed;
+  bottom: 20px;
+  right: 45%;
   background: white;
   color: black;
   border: none;
   padding: 8px;
   font-size: 20px;
   cursor: pointer;
-  border-radius: 50%;
+  border-radius: 20px;
   transition: 0.3s;
 
   &:hover {
@@ -605,12 +614,18 @@ const CloseButton = styled.button`
 `;
 
 const images = [
-  { src: img1, columnSpan: "span 2", rowSpan: "span 1", border: "20px", border2: "1px" },
-  { src: img2, columnSpan: "span 1", rowSpan: "span 2", border: "30px", border2:"1px" },
-  { src: img3, columnSpan: "span 1", rowSpan: "span 1", border: "10px", border2:"1px" },
-  { src: img4, columnSpan: "span 1", rowSpan: "span 1", border: "15px", border2:"1px" },
-  { src: img5, columnSpan: "span 2", rowSpan: "span 2", border: "20px", border2:"1px" },
-  { src: img6, columnSpan: "span 2", rowSpan: "span 2", border: "25px", border2:"1px" },
+  { src: im3, columnSpan: "span 2", rowSpan: "span 1", border: "20px", border2: "1px" },
+  { src: im4, columnSpan: "span 1", rowSpan: "span 2", border: "30px", border2:"1px" },
+  { src: im5, columnSpan: "span 1", rowSpan: "span 1", border: "10px", border2:"1px" },
+  { src: im6, columnSpan: "span 1", rowSpan: "span 1", border: "15px", border2:"1px" },
+  { src: im7, columnSpan: "span 2", rowSpan: "span 2", border: "20px", border2:"1px" },
+  { src: im8, columnSpan: "span 2", rowSpan: "span 2", border: "25px", border2:"1px" },
+  { src: im9, columnSpan: "span 2", rowSpan: "span 1", border: "20px", border2: "1px" },
+  { src: im10, columnSpan: "span 1", rowSpan: "span 2", border: "30px", border2:"1px" },
+  { src: im11, columnSpan: "span 1", rowSpan: "span 1", border: "10px", border2:"1px" },
+  { src: im12, columnSpan: "span 1", rowSpan: "span 1", border: "15px", border2:"1px" },
+  { src: im13, columnSpan: "span 2", rowSpan: "span 2", border: "20px", border2:"1px" },
+  { src: im14, columnSpan: "span 2", rowSpan: "span 2", border: "25px", border2:"1px" },
 ];
 
 const Gallery = () => {
@@ -648,11 +663,13 @@ const Gallery = () => {
 
       {/* Lightbox */}
       {selectedImage && (
-        <LightboxOverlay onClick={() => setSelectedImage(null)}>
+        <LightboxOverlay
+        //  onClick={() => setSelectedImage(null)}
+         >
           <LightboxContent>
             <LightboxImage src={selectedImage} alt="Enlarged Image" />
             <CloseButton onClick={() => setSelectedImage(null)}>
-              <FaTimes />
+              <FaTimes /> Close
             </CloseButton>
           </LightboxContent>
         </LightboxOverlay>

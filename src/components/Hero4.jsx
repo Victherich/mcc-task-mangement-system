@@ -4,12 +4,12 @@ import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';  
 // import car1 from '../Images/ab1.jpeg';
 // import car2 from '../Images/ab2.jpeg';
-import car3 from '../Images/ab3.jpg';
-import car4 from '../Images/ab4.jpg';
-import car5 from '../Images/ab5.jpg';
-import car6 from '../Images/ab6.jpg';
-import car7 from '../Images/ab7.jpg';
-import car12 from '../Images/ab8.jpg';
+import car3 from '../Images2/im9.jpeg';
+import car4 from '../Images2/im4.jpeg';
+import car5 from '../Images2/im5.jpeg';
+import car6 from '../Images2/im6.jpeg';
+import car7 from '../Images2/im7.jpeg';
+import car12 from '../Images2/im8.jpeg';
 // import car13 from '../Images/car15.png';
 // import car22 from '../Images/car22.jpg';
 // import car21 from '../Images/car21.jpg';
@@ -30,7 +30,7 @@ const HeroContainer = styled.section`
   color: #ffffff;
 
   @media(max-width:768px){
-    height:25vh;
+    height:40vh;
   }
 
 `;
@@ -53,8 +53,8 @@ const HeroTitle = styled.h1`
   opacity: 0;
   transform: translateY(50px);
   animation: ${(props) => props.isVisible ? 'flyInFromBottom 3s ease-out forwards' : 'none'};
-     font-style: italic;
-  font-family: "Brush Script MT", "Brush Script Std", cursive;
+  //    font-style: italic;
+  // font-family: "Brush Script MT", "Brush Script Std", cursive;
 
   @media (max-width: 768px) {
     font-size: 2rem;
@@ -180,7 +180,7 @@ const Hero4 = () => {
   return (
     <HeroContainer ref={sliderRef}>
       <HeroContent>
-        <HeroTitle isVisible={isVisible}>OUR ARTISTIC GALLERY</HeroTitle>
+        <HeroTitle isVisible={isVisible}>EXPLORE OUR GALLERY</HeroTitle>
         {/* <HeroSubtitle isVisible={isVisible}>
           Transforming Africa’s Transportation, Infrastructure & Energy Landscape.
         </HeroSubtitle> */}

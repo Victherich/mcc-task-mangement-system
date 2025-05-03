@@ -2,34 +2,24 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';  
-// import car1 from '../Images/car1.jpeg';
-// import car2 from '../Images/car2.jpeg';
-// import car3 from '../Images/car3.jpeg';
-// import car4 from '../Images/car4.jpeg';
-// import car5 from '../Images/car5.jpeg';
-// import car6 from '../Images/car6.jpeg';
-// import car7 from '../Images/car7.jpeg';
-// import car12 from '../Images/car12.jpg';
-// import car13 from '../Images/car15.png';
-// import car22 from '../Images/car22.jpg';
-// import car21 from '../Images/car21.jpg';
-// import car18 from '../Images/car18.jpg';
-
-import car3 from '../Images/ab3.jpg';
-import car4 from '../Images/ab4.jpg';
-import car5 from '../Images/ab5.jpg';
-import car6 from '../Images/ab6.jpg';
-import car7 from '../Images/ab7.jpg';
-import car12 from '../Images/ab8.jpg';
-import im1 from '../Images/im1.jpeg'
-import im3 from '../Images/im3.jpeg'
-import im4 from '../Images/im4.jpeg'
-import im6 from '../Images/im6.jpeg'
-import election from '../Images/election.jpeg'
-import launch from '../Images/launch.jpeg'
-
-
-// import { useSelector } from 'react-redux';
+import im1 from '../Images2/im1.jpeg';
+import im2 from '../Images2/im2.jpeg';
+import im3 from '../Images2/im3.jpeg';
+import im4 from '../Images2/im4.jpeg';
+import im5 from '../Images2/im5.jpeg';
+import im6 from '../Images2/im6.jpeg';
+import im7 from '../Images2/im7.jpeg';
+import im8 from '../Images2/im8.jpeg';
+import im9 from '../Images2/im9.jpeg';
+import im10 from '../Images2/im10.jpeg';
+import im11 from '../Images2/im11.jpeg';
+import im12 from '../Images2/im12.jpeg';
+import im13 from '../Images2/im13.jpeg';
+import im14 from '../Images2/im14.jpeg';
+// import im15 from '../Images2/im15.jpeg';
+// import im16 from '../Images2/im16.jpeg';
+// import im17 from '../Images2/im17.jpeg';
+// import im18 from '../Images2/im18.jpeg';
 
 
 
@@ -134,34 +124,40 @@ const Hero2 = () => {
   const sliderRef = useRef(null);
   const [position, setPosition] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
-//   const theme = useSelector((state)=>state.theme)
 
-  const carImages = [im1, car3,im3, car4,im4, car5,im6, car6, car7, car12];
-//   const carImages2 = [ car13, car22, car21, car18];
+const images = [
+  // im1,
+  // im2,
+  im3,
+  im4,
+  im5,
+  im6,
+  im7,
+  im8,
+  im9,
+  im10,
+  im11,
+  im12,
+  im13,
+  im14,
+  // im15,
+  // im16,
+  // im17,
+  // im18
+];
 
-//   const [carImages,setCarImages]=useState(carImages2)
-
-//   useEffect(()=>{
-//     if(theme){
-//       setCarImages(carImages2)
-//     } else{
-//       setCarImages(carImages1)
-//     }
-
-//   },[theme])
-  
 
   useEffect(() => {
     const interval = setInterval(() => {
       setPosition((prev) => {
-        const totalImages = carImages.length;
+        const totalImages = images.length;
         const nextPosition = (prev + 1) % totalImages;
         return nextPosition;
       });
-    }, 3000); // Change image every 3 seconds
+    }, 2000); // Change image every 3 seconds
 
     return () => clearInterval(interval);
-  }, [carImages.length]);
+  }, [images.length]);
 
   // Intersection Observer to detect when the section is visible
   useEffect(() => {
@@ -197,7 +193,7 @@ const Hero2 = () => {
       <Slider
         style={{ transform: `translateX(-${position * 100}vw)` }}
       >
-        {carImages.concat(carImages).map((car, index) => (
+        {images.concat(images).map((car, index) => (
           <CarImage key={index} src={car} alt={`Car ${index + 1}`} />
         ))}
       </Slider>

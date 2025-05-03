@@ -8,19 +8,52 @@ import Testimonials from './Testimonials'
 import News from './News'
 import FAQ from './Faq'
 import Hero2 from './Hero2'
+import AboutUsBrief from './AboutUsBriefComponent'
+import { useEffect , useState} from 'react'
+import { useLocation } from 'react-router-dom'
+import Events from './Events'
 
 const LandingPage = () => {
+  const location = useLocation();
+
+  const [reRender, setRerender] = useState(true);
+
+  useEffect(() => {
+    const id = setTimeout(() => {
+      setRerender(false);
+    }, 300);
+
+    const id2 = setTimeout(() => {
+      setRerender(true);
+    }, 600);
+
+    return () => {
+      clearTimeout(id);
+      clearTimeout(id2);
+    };
+  }, [location.pathname]);
+
+
+
+
+
+
   return (
-    <div>
+    reRender&&<div>
       <Hero/>
-      <AboutComponent/>
+      <AboutUsBrief/>
+    
+          
+      {/* <AboutComponent/> */}
       <Impact/>
+      <Events/>
       <Programs/>
       <GetInvolved/>
-      <Testimonials/>
+      
       <Hero2/>
-      <News/>
-      <FAQ/>
+      <Testimonials/>
+      {/* <News/> */}
+      {/* <FAQ/> */}
     </div>
   )
 }

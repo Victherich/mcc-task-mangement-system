@@ -1,9 +1,11 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
-import heroVideo from "../Images/media1.mp4";
-import heroVideo1 from "../Images/media2.mp4";
-import heroVideo2 from "../Images/media3.mp4";
+import heroVideo from "../Images2/h1.mp4";
+import heroVideo2 from "../Images2/h2.mp4";
+import heroVideo1 from "../Images2/im16.mp4";
+import heroVideo3 from "../Images2/media2.mp4";
+import heroVideo4 from "../Images2/im18.mp4";
 
 // Styled Components
 const HeroContainer = styled.section`
@@ -33,18 +35,18 @@ const HeroText = styled.div`
 `;
 
 const HeroTitle = styled.h1`
-  font-size: 3.5rem;
-  font-weight: 200;
+  font-size: 3rem;
+  // font-weight: 200;
   color: white;
   text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
   opacity: 0;
   transform: translateY(50px);
   animation: ${(props) => (props.isVisible ? "flyInFromBottom 1.5s ease-out forwards" : "none")};
-   font-style: italic;
-  font-family: "Brush Script MT", "Brush Script Std", cursive;
+  //  font-style: italic;
+  // font-family: "Brush Script MT", "Brush Script Std", cursive;
 
   @media (max-width: 768px) {
-    font-size: 2.5rem;
+    font-size: 2rem;
   }
 
   @media (max-width: 428px) {
@@ -149,7 +151,7 @@ const Hero = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCount((prev) => (prev === 2 ? 0 : prev + 1)); // Reset to 0 after reaching 2
+      setCount((prev) => (prev === 4 ? 0 : prev + 1)); // Reset to 0 after reaching 2
     }, 6000); // Change every 1 second
 
     return () => clearInterval(interval); // Cleanup on unmount
@@ -169,12 +171,19 @@ const Hero = () => {
       {count===2&&<video autoPlay muted loop>
         <source src={heroVideo2} type="video/mp4" />
       </video>}
+      {count===3&&<video autoPlay muted loop>
+        <source src={heroVideo3} type="video/mp4" />
+      </video>}
+      {count===4&&<video autoPlay muted loop>
+        <source src={heroVideo4} type="video/mp4" />
+      </video>}
+
       <HeroText>
-        <HeroTitle isVisible={isVisible}>EZE MBIONWU FOUNDATION</HeroTitle>
+        <HeroTitle isVisible={isVisible}>THE GLORY AND CHILDREN FOUNDATION</HeroTitle>
         {/* <HeroTitle2 isVisible={isVisible}>AFRICAN JOURNAL OF GENERAL AGRICULTURE</HeroTitle2> */}
         
-        <HeroSubtitle isVisible={isVisible}>(FOR COMMUNITY DEVELOPMENT AND STABILITY)</HeroSubtitle>
-        <HeroSubtitle isVisible={isVisible}>Let’s do something positive</HeroSubtitle>
+        <HeroSubtitle isVisible={isVisible}>"Empowering Women, Uplifting Children and Transforming Futures."</HeroSubtitle>
+    
       </HeroText>
     </HeroContainer>
   );

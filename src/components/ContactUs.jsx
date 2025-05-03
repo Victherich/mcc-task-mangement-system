@@ -247,8 +247,9 @@ import bg from "../Images/4146.jpg";
 
 // Styled Components
 const PageWrapper = styled.div`
-  font-family: Arial, sans-serif;
-  background: #f9f9f9;
+  // font-family: Arial, sans-serif;
+  // background: #f9f9f9;
+  background:rgba(0,0,255,0.1);
 `;
 
 // Hero Section
@@ -276,23 +277,23 @@ const HeroSubtitle = styled.p`
 
 // Contact Form Section
 const FormSection = styled.div`
-  background: #fff;
+  // background: #fff;
   padding: 60px 20px;
 `;
 
 const FormContainer = styled.div`
   max-width: 600px;
   margin: auto;
-  background: #f4f4f4;
+  // background: #f4f4f4;
   padding: 30px;
   border-radius: 10px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  // box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
 `;
 
 const FormTitle = styled.h2`
   text-align: center;
   margin-bottom: 20px;
-  color: rgba(0,0,255,0.5);
+  color: #000050;
 `;
 
 const FormInput = styled.input`
@@ -302,6 +303,7 @@ const FormInput = styled.input`
   border: 1px solid #ccc;
   border-radius: 5px;
   font-size: 16px;
+  outline:none;
 `;
 
 const FormTextArea = styled.textarea`
@@ -312,10 +314,11 @@ const FormTextArea = styled.textarea`
   border-radius: 5px;
   font-size: 16px;
   height: 120px;
+  outline:none;
 `;
 
 const SubmitButton = styled.button`
-  background: rgba(0,0,255,0.5);
+  background: #000050;
   color: white;
   padding: 10px 20px;
   font-size: 16px;
@@ -326,7 +329,7 @@ const SubmitButton = styled.button`
   width: 100%;
 
   &:hover {
-    background: rgba(0,0,255,0.7);
+    background:gray;
   }
 `;
 

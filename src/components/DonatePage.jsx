@@ -7,7 +7,7 @@ import bg from '../Images/money.png'
 // Styled Components
 const PageWrapper = styled.div`
   font-family: Arial, sans-serif;
-  background: #f9f9f9;
+  background: rgba(0,0,255,0.1);
 `;
 
 const HeroSection = styled.div`
@@ -43,16 +43,16 @@ const FormSection = styled.div`
 const FormContainer = styled.div`
   max-width: 600px;
   margin: auto;
-  background: #f4f4f4;
+  // background: #f4f4f4;
   padding: 30px;
   border-radius: 10px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  // box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
 `;
 
 const FormTitle = styled.h2`
   text-align: center;
   margin-bottom: 20px;
-  color: rgba(0,0,255,0.5);
+  color: #000050;
 `;
 
 const FormInput = styled.input`
@@ -62,10 +62,11 @@ const FormInput = styled.input`
   border: 1px solid #ccc;
   border-radius: 5px;
   font-size: 16px;
+  outline:none;
 `;
 
 const DonateButton = styled.button`
-  background: rgba(0,0,255,0.5);
+  background: #000050;
   color: white;
   padding: 10px;
   font-size: 16px;
@@ -78,7 +79,7 @@ const DonateButton = styled.button`
   transition: 0.3s;
 
   &:hover {
-    background:rgba(0,0,255,0.7);
+    background:gray;
   }
 `;
 

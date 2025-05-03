@@ -1,137 +1,143 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { FaHandsHelping, FaHandHoldingHeart, FaHandshake } from "react-icons/fa";
 
-// Styled Components
-const GetInvolvedSection = styled.section`
-  background: linear-gradient(135deg, rgba(0,0,255,0.1), rgba(0,0,255,0.8));
-  color: white;
-  padding: 80px 20px;
-  text-align: center;
+// Animations
+const float = keyframes`
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
 `;
 
-const Container = styled.div`
+// Styled Components
+const Section = styled.section`
+  background: radial-gradient(circle at top, #0a0a23 20%, #000033 100%);
+  color: #fff;
+  padding: 100px 20px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+`;
+
+const Wrapper = styled.div`
   max-width: 1100px;
   margin: auto;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 30px;
 `;
 
 const Title = styled.h2`
-  font-size: 32px;
-  font-weight: bold;
-  text-transform: uppercase;
+  font-size: 40px;
+  font-weight: 900;
+  color: #ffffff;
   margin-bottom: 20px;
   letter-spacing: 2px;
 `;
 
 const Subtitle = styled.p`
   font-size: 18px;
+  color: #dcdcdc;
   max-width: 800px;
-  margin: 0 auto 40px;
-  line-height: 1.6;
+  margin: 0 auto 60px;
+  line-height: 1.7;
 `;
 
-const ActionCard = styled.div`
-  background: rgba(255, 255, 255, 0.2);
-  padding: 30px;
-  width: 280px;
-  border-radius: 15px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-  text-align: center;
-  transition: 0.3s;
-  
-  &:hover {
-    transform: scale(1.05);
-    background: white;
-    color: rgba(0,0,255,0.5);
+const Actions = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+  align-items: center;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+    justify-content: space-around;
   }
+`;
+
+const Action = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: ${float} 6s ease-in-out infinite;
 `;
 
 const Icon = styled.div`
-  font-size: 50px;
-  color: white;
-  margin-bottom: 15px;
+  font-size: 60px;
+  color: #ffd700;
+  margin-bottom: 20px;
   transition: 0.3s;
-  
-  ${ActionCard}:hover & {
-    color: rgba(0,0,255,0.5);
-  }
+  filter: drop-shadow(0 0 10px #ffd700);
 `;
 
-const ActionTitle = styled.h3`
-  font-size: 20px;
+const Label = styled.h3`
+  font-size: 22px;
   font-weight: bold;
+  color: #fff;
   margin-bottom: 10px;
 `;
 
-const ActionText = styled.p`
+const Text = styled.p`
   font-size: 16px;
-  transition: 0.3s;
+  max-width: 280px;
+  color: #ccc;
+  line-height: 1.6;
 `;
 
 const ActionButton = styled.a`
+  margin-top: 15px;
   display: inline-block;
-  background: white;
-  color: rgba(0,0,255,0.5);
-  padding: 12px 20px;
-  font-size: 14px;
-  border-radius: 20px;
-  text-decoration: none;
+  padding: 10px 25px;
   font-weight: bold;
-  margin-top: 10px;
-  transition: 0.3s;
+  color: #000033;
+  background: #ffd700;
+  border-radius: 25px;
+  text-decoration: none;
+  transition: background 0.3s;
 
   &:hover {
-    background: rgba(0,0,255,0.5);
-    color: white;
+    background: #ffa500;
+    color: #000;
   }
 `;
 
-// Get Involved Component
 const GetInvolved = () => {
   return (
-    <GetInvolvedSection id="get-involved">
-      <Title>Get Involved 💖</Title>
-      <Subtitle>
-        Join us in making a difference! There are many ways to support our mission.  
-        Whether through donations, volunteering, or partnerships, your help makes an impact.
-      </Subtitle>
+    <Section id="get-involved">
+      <Wrapper>
+        <Title>🌠 Join Our Orbit of Impact</Title>
+        <Subtitle>
+          Be a vital force in our universe of hope. Whether you give, serve, or partner,
+          you help us launch brighter futures for women and children.
+        </Subtitle>
 
-      <Container>
-        {/* Donate */}
-        <ActionCard>
-          <Icon><FaHandHoldingHeart /></Icon>
-          <ActionTitle>Donate Now 💰</ActionTitle>
-          <ActionText>
-            Support our projects with a one-time or recurring donation.
-          </ActionText>
-          <ActionButton href="/donate">Donate ➜</ActionButton>
-        </ActionCard>
+        <Actions>
+          <Action>
+            <Icon><FaHandHoldingHeart /></Icon>
+            <Label>Donate to Fuel Change 💛</Label>
+            <Text>
+              Every contribution lights up a life — providing food, shelter, and education for those in urgent need.
+            </Text>
+            <ActionButton href="/donate">Donate ➜</ActionButton>
+          </Action>
 
-        {/* Volunteer */}
-        <ActionCard>
-          <Icon><FaHandsHelping /></Icon>
-          <ActionTitle>Become a Volunteer 🙌</ActionTitle>
-          <ActionText>
-            Join our team and contribute your time and skills.
-          </ActionText>
-          <ActionButton href="/contactus">Volunteer ➜</ActionButton>
-        </ActionCard>
+          <Action>
+            <Icon><FaHandsHelping /></Icon>
+            <Label>Volunteer with Heart 🤲</Label>
+            <Text>
+              Bring your energy and time to missions that matter — help feed the hungry and inspire hope.
+            </Text>
+            <ActionButton href="/contactus">Volunteer ➜</ActionButton>
+          </Action>
 
-        {/* Partner with Us */}
-        <ActionCard>
-          <Icon><FaHandshake /></Icon>
-          <ActionTitle>Partner with Us 🤝</ActionTitle>
-          <ActionText>
-            Collaborate with us to create a bigger impact.
-          </ActionText>
-          <ActionButton href="/contactus">Partner ➜</ActionButton>
-        </ActionCard>
-      </Container>
-    </GetInvolvedSection>
+          <Action>
+            <Icon><FaHandshake /></Icon>
+            <Label>Partner for Bigger Impact 🌍</Label>
+            <Text>
+              Let’s unite organizations, skills, and dreams — because collaboration multiplies change.
+            </Text>
+            <ActionButton href="/contactus">Partner ➜</ActionButton>
+          </Action>
+        </Actions>
+      </Wrapper>
+    </Section>
   );
 };
 

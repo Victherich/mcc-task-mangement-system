@@ -16,6 +16,7 @@ import INECEngagement from './components/INECEngagement';
 import wp from './Images/whatsapplogo.png'
 import fb from './Images/fb.png'
 import ins from './Images/ins.png'
+import SupportUsComponent from './components/SupportUsComponent';
 
 function App() {
   return (
@@ -33,11 +34,11 @@ function App() {
         <Route path='/gallery' element={<Gallery/>}/>
         <Route path='/inecengagement' element={<INECEngagement/>}/>
       </Routes>
-      <a><img src={fb} alt="logo" className="WhatsAppIcon1" onClick={() => window.open("https://wa.me/", "_blank")} /></a> 
-      <a><img src={ins} alt="logo" className="WhatsAppIcon2" onClick={() => window.open("https://wa.me/", "_blank")} /></a> 
+      {/* <a><img src={fb} alt="logo" className="WhatsAppIcon1" onClick={() => window.open("https://wa.me/", "_blank")} /></a>  */}
+      {/* <a><img src={ins} alt="logo" className="WhatsAppIcon2" onClick={() => window.open("https://wa.me/", "_blank")} /></a>  */}
     
-      <a><img src={wp} alt="logo" className="WhatsAppIcon" onClick={() => window.open("https://wa.me/", "_blank")} /></a> 
-    
+      <a><img src={wp} alt="logo" className="WhatsAppIcon" onClick={() => window.open("https://wa.me/2347053359779", "_blank")} /></a> 
+    <SupportUsComponent/>
       <Footer/>
     </BrowserRouter>
   );

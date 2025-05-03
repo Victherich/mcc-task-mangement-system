@@ -1,144 +1,188 @@
-import React from "react";
-import Slider from "react-slick";
+import React, { useState } from "react";
 import styled from "styled-components";
-import "slick-carousel/slick/slick.css";  
-import "slick-carousel/slick/slick-theme.css";
-import freewill from '../Images/freewill.jpg';
-import donor from '../Images/donor.jpg'
-import benefit from '../Images/benefit.jpg'
-import partner from '../Images/partner.png'
+import im1 from '../Images2/logo.jpeg';
+import im2 from '../Images2/logo.jpeg';
+import im3 from '../Images2/logo.jpeg';
+import im4 from '../Images2/logo.jpeg';
 
 // Styled Components
-const TestimonialsSection = styled.section`
-  background: #f4f4f4;
+const CarouselSection = styled.section`
+  background: #f8f9fa;
   padding: 80px 20px;
   text-align: center;
 `;
 
 const Title = styled.h2`
-  font-size: 32px;
-  font-weight: bold;
+  font-size: 42px;
+  font-weight: 900;
+  color: #1e3a8a;
+  margin-bottom: 16px;
   text-transform: uppercase;
-  margin-bottom: 20px;
-  color: rgba(0,0,255,0.5);
-  letter-spacing: 2px;
+
+
+  @media(max-width:428px){
+  font-size:2rem;
+  }
 `;
 
 const Subtitle = styled.p`
   font-size: 18px;
+  color: #4b5563;
+  margin-bottom: 60px;
+  font-weight: 500;
+  line-height: 1.7;
   max-width: 800px;
-  margin: 0 auto 40px;
-  line-height: 1.6;
-  color: #555;
+  margin: 0 auto;
+`;
+
+const CarouselWrapper = styled.div`
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  overflow: hidden;
+`;
+
+const CarouselTrack = styled.div`
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+
+@media(max-width:884px){
+  flex-direction:column;
+  align-items:center;
+  gap:20px;
+}
+
 `;
 
 const TestimonialCard = styled.div`
   background: white;
-  padding: 30px;
-  border-radius: 15px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  padding: 40px 30px;
+  border-radius: 20px;
+  box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.1);
+  width: 270px;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
   text-align: center;
-  margin: 10px;
-  max-width:600px;
+  margin: 0 10px;
 `;
 
 const ProfileImage = styled.img`
-  width: 80px;
-  height: 80px;
+  width: 90px;
+  height: 90px;
   border-radius: 50%;
-  object-fit:cover;
-//   margin-bottom: 15px;
-margin:0 auto;
-margin-bottom:10px;
+  object-fit: cover;
+  margin-bottom: 15px;
 `;
 
 const Name = styled.h3`
-  font-size: 18px;
-  font-weight: bold;
+  font-size: 20px;
+  font-weight: 700;
+  color: #1e3a8a;
   margin-bottom: 5px;
-  color: #333;
 `;
 
 const Role = styled.p`
-  font-size: 14px;
-  color: #777;
-  margin-bottom: 10px;
+  font-size: 15px;
+  color: #6b7280;
+  margin-bottom: 15px;
 `;
 
 const Feedback = styled.p`
   font-size: 16px;
-  color: #555;
+  color: #4b5563;
   line-height: 1.5;
 `;
 
+const ArrowButton = styled.button`
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.3);
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 50%;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 10;
+
+  ${(props) =>
+    props.left
+      ? `left: 10px;`
+      : `right: 10px;`}
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.6);
+  }
+`;
+
 const Testimonials = () => {
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 2,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 3000,
-    responsive: [
-      {
-        breakpoint: 768,
-        settings: {
-          slidesToShow: 1,
-        },
-      },
-    ],
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const testimonials = [
+    {
+      name: "Mary Nnedi",
+      role: "Beneficiary",
+      feedback:
+        "Thanks to this foundation, I was able to continue my education. Their scholarship program has truly changed my life.",
+      image: im1,
+    },
+    {
+      name: "Chinwe Nancy",
+      role: "Volunteer",
+      feedback:
+        "Volunteering with this foundation has been the most rewarding experience of my life. The smiles we create are priceless.",
+      image: im2,
+    },
+    {
+      name: "Sarah Leonard",
+      role: "Donor",
+      feedback:
+        "I am proud to support this incredible organization. They are truly making a difference where it's needed most.",
+      image: im3,
+    },
+    {
+      name: "David Kim",
+      role: "Partner",
+      feedback:
+        "Partnering with this foundation has been a fantastic journey. Their commitment to social impact is second to none.",
+      image: im4,
+    },
+  ];
+
+  const handlePrevClick = () => {
+    setCurrentIndex((prevIndex) => (prevIndex === 0 ? testimonials.length - 1 : prevIndex - 1));
+  };
+
+  const handleNextClick = () => {
+    setCurrentIndex((prevIndex) => (prevIndex === testimonials.length - 1 ? 0 : prevIndex + 1));
   };
 
   return (
-    <TestimonialsSection id="testimonials">
-      <Title>Testimonials & Success Stories 🗣️</Title>
+    <CarouselSection id="testimonials">
+      <Title>What Our Community Says 🗣️</Title>
       <Subtitle>
-        Hear from the people whose lives have been positively transformed by our work.
+        Hear from those whose lives have been touched by our work. Their stories inspire us every day.
       </Subtitle>
 
-      <Slider {...settings}>
-        {/* Testimonial 1 */}
-        <TestimonialCard>
-          <ProfileImage src={benefit} alt="User" />
-          <Name>Mary Nnedi</Name>
-          <Role>Beneficiary</Role>
-          <Feedback>
-            "Thanks to this NGO, I was able to continue my education. Their scholarship program changed my life!"
-          </Feedback>
-        </TestimonialCard>
+      <CarouselWrapper>
+        <CarouselTrack
+          style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+        >
+          {testimonials.map((testimonial, index) => (
+            <TestimonialCard key={index}>
+              <ProfileImage src={testimonial.image} alt={testimonial.name} />
+              <Name>{testimonial.name}</Name>
+              <Role>{testimonial.role}</Role>
+              <Feedback>{testimonial.feedback}</Feedback>
+            </TestimonialCard>
+          ))}
+        </CarouselTrack>
 
-        {/* Testimonial 2 */}
-        <TestimonialCard>
-          <ProfileImage src={freewill} alt="User" />
-          <Name>Chinwe Nancy</Name>
-          <Role>Volunteer</Role>
-          <Feedback>
-            "Volunteering here has been the most rewarding experience. Seeing the smiles on people's faces is priceless!"
-          </Feedback>
-        </TestimonialCard>
-
-        {/* Testimonial 3 */}
-        <TestimonialCard>
-          <ProfileImage src={donor} alt="User" />
-          <Name>Sarah Leonard</Name>
-          <Role>Donor</Role>
-          <Feedback>
-            "I trust this organization completely. They are truly making an impact where it's needed the most."
-          </Feedback>
-        </TestimonialCard>
-
-        {/* Testimonial 4 */}
-        <TestimonialCard>
-          <ProfileImage src={partner} alt="User" />
-          <Name>David Kim</Name>
-          <Role>Partner</Role>
-          <Feedback>
-            "Partnering with this NGO has been an incredible journey. Their dedication to social impact is unmatched!"
-          </Feedback>
-        </TestimonialCard>
-      </Slider>
-    </TestimonialsSection>
+        {/* <ArrowButton left onClick={handlePrevClick}>
+          {"<"}
+        </ArrowButton> */}
+        {/* <ArrowButton onClick={handleNextClick}>{">"}</ArrowButton> */}
+      </CarouselWrapper>
+    </CarouselSection>
   );
 };
 
