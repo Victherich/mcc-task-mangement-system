@@ -154,6 +154,9 @@ const DonatePage = () => {
         <FormContainer>
           <FormTitle>Make a Donation</FormTitle>
           <form>
+            <h4 style={{color:"#000050"}}>
+              PayStack
+            </h4>
             <FormInput type="text" name="name" placeholder="Your Name" value={formData.name} onChange={handleChange} required />
             <FormInput type="email" name="email" placeholder="Your Email" value={formData.email} onChange={handleChange} required />
             <FormInput type="number" name="amount" placeholder="Enter Amount" value={formData.amount} onChange={handleChange} required />
@@ -163,6 +166,41 @@ const DonatePage = () => {
             </DonateButton>
           </form>
         </FormContainer>
+        <br/>
+        <br/>
+       <div
+       style={{
+        display:"flex", justifyContent:"center", alignItems:"center", width:"100%", flexDirection:"Column", color:"#000050", 
+       }}
+       >
+
+       <h4>Bank Account Detail (NGN):</h4>
+        <h4>
+          1220051901 | Ecobank 
+        </h4>
+        <h4>The Glory & Children Foundation</h4>
+       </div>
+
+
+
+
+
+       <br/>
+<br/>
+<br/>
+       <div
+       style={{
+        display:"flex", justifyContent:"center", alignItems:"center",  flexDirection:"Column", color:"#000050",
+       }}
+       >
+
+       <h4>Bank Account Detail (USD):</h4>
+        <h4>
+          3000061836 | GTB 
+        </h4>
+        <h4>Glory Robinson</h4>
+       </div>
+
       </FormSection>
     </PageWrapper>
   );

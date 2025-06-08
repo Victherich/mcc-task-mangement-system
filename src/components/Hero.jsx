@@ -6,6 +6,7 @@ import heroVideo2 from "../Images2/h2.mp4";
 import heroVideo1 from "../Images2/im16.mp4";
 import heroVideo3 from "../Images2/media2.mp4";
 import heroVideo4 from "../Images2/im18.mp4";
+import herobg from '../Images2/herobg.jpg'
 
 // Styled Components
 const HeroContainer = styled.section`
@@ -16,6 +17,9 @@ const HeroContainer = styled.section`
   height: 100vh;
   text-align: center;
   overflow: hidden;
+  background-image:url(${herobg});
+  background-size:cover;
+  background-position:center;
 
   video {
     position: absolute;

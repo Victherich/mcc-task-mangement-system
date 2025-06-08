@@ -4,12 +4,16 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { unregister } from './serviceWorker';
+import ContextProvider from './components/Context';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
+  <ContextProvider>
+<React.StrictMode>
     <App />
   </React.StrictMode>
+  </ContextProvider>
+  
 );
 
 // Unregister the service worker (disables offline support)

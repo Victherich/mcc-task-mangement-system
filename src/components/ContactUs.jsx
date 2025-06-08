@@ -239,11 +239,12 @@
 
 
 
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import styled from "styled-components";
 import Swal from "sweetalert2";
 import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope, FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from "react-icons/fa";
 import bg from "../Images/4146.jpg";
+import { Context } from "./Context";
 
 // Styled Components
 const PageWrapper = styled.div`
@@ -335,6 +336,7 @@ const SubmitButton = styled.button`
 
 // Contact Page Component
 const ContactUs = () => {
+  const {say} = useContext(Context)
   const [formData, setFormData] = useState({ name: "", email: "", phone: "", message: "" });
 
   const handleChange = (e) => {
@@ -356,7 +358,7 @@ const ContactUs = () => {
 
     // API request to send message
     try {
-      const response = await fetch("https://www.ezembionwufoundation.org/api/contact_form_endpoint.php", {
+      const response = await fetch("https://hotsalesng.com/api_gl/contact_form_endpoint.php", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
@@ -387,6 +389,8 @@ const ContactUs = () => {
       });
     }
   };
+
+  console.log(say)
 
   return (
     <PageWrapper>

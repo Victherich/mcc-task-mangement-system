@@ -1,8 +1,8 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import styled from "styled-components";
 import eent_flier from "../Images2/padflier.jpeg";
 // import extraImage1 from "../Images2/event2.jpeg";
-// import extraImage2 from "../Images2/event3.jpeg";
+import padmedia from "../Images2/padmedia.mp4";
 import im15 from "../Images2/im15.mp4";
 import im16 from "../Images2/im16.mp4";
 import im18 from '../Images2/im18.mp4'
@@ -61,15 +61,15 @@ const FlierImage = styled.img`
 `;
 
 const Events = () => {
-  const videoRefs = useRef([]);
+    const videoRefs = useRef([]);
 
-  const handleVideoClick = (index) => {
-    const video = videoRefs.current[index];
-    if (video) {
-      video.muted = false;
-      video.play();
-    }
-  };
+    useEffect(() => {
+      videoRefs.current.forEach((video) => {
+        if (video) {
+          video.playbackRate = 0.5; // Set to desired speed
+        }
+      });
+    }, []);
 
   return (
     <EventsWrapper>
@@ -83,18 +83,17 @@ const Events = () => {
       <MediaGrid>
         {/* Facebook Embedded Video */}
         <VideoWrapper>
-          <iframe
-            src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fweb.facebook.com%2Fglory.robinson.940%2Fvideos%2F998023819108109%2F&show_text=false&width=267&t=0"
-            width="267"
-            height="476"
-            style={{ border: "none", overflow: "hidden" }}
-            scrolling="no"
-            frameBorder="0"
-            allowFullScreen={true}
-            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-            title="Facebook Event Video"
-          ></iframe>
-        </VideoWrapper>
+            <StyledVideo
+              src={padmedia}
+              muted
+              autoPlay
+              loop
+              playsInline
+              controls
+            //   onClick={() => handleVideoClick(index)}
+            //   ref={(el) => (videoRefs.current[index] = el)}
+            />
+          </VideoWrapper>
 
         {/* Local Videos with autoplay muted, click to unmute */}
         {[im15, im16, im18].map((src, index) => (
@@ -105,7 +104,7 @@ const Events = () => {
               autoPlay
               loop
               playsInline
-              onClick={() => handleVideoClick(index)}
+           
               ref={(el) => (videoRefs.current[index] = el)}
             />
           </VideoWrapper>
