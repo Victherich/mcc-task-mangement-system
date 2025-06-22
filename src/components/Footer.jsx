@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import logo from "../Images2/logo2.jpeg"; // Make sure the path to the logo is correct
+import logo from "../Images3/MCCLOGO.png"; // Make sure the path to the logo is correct
 import caccert from '../Images2/caccert.jpeg'
 import CacCert from "./CacCert";
+import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedin } from 'react-icons/fa';
 
 // Styled Components
 const FooterContainer = styled.footer`
-   background: #000045;
+   background: #119458;
   color: white;
   padding: 40px 20px;
   text-align: center;
@@ -14,10 +15,11 @@ const FooterContainer = styled.footer`
 `;
 
 const FooterLogo = styled.img`
-  width: 250px;
+  width: 80px;
+  border-radius:50%;
 
   @media (max-width: 768px) {
-    width: 100px;
+    width: 80px;
   }
 `;
 
@@ -33,7 +35,9 @@ const FooterText = styled.p`
   font-size: 16px;
   line-height: 1.6;
   margin-bottom: 20px;
-  color: #e0e0e0;
+  color: white;
+  // width:80%;
+  text-align:center;
 `;
 
 const SocialLinks = styled.div`
@@ -91,48 +95,59 @@ const Footer = () => {
      setIsVisible={setIsVisible}
      />
       {/* Logo */}
-      <FooterLogo src={logo} alt="The Glory and Children Foundation Logo" /><br/>
+      <FooterLogo src={logo} alt="Matthew car wash and cleaning" /><br/>
       
-      <FooterLogo style={{width:"50px", cursor:"pointer"}} src={caccert} alt='caccert' onClick={()=>setIsVisible(true)}/>
-      <p style={{fontSize:"0.7rem", fontStyle:"italic"}}>RN8343245</p>
+      {/* <FooterLogo style={{width:"50px", cursor:"pointer"}} src={caccert} alt='caccert' onClick={()=>setIsVisible(true)}/>
+      <p style={{fontSize:"0.7rem", fontStyle:"italic"}}>RN8343245</p> */}
       {/* Title */}
-      <FooterTitle>The Glory and Children Foundation</FooterTitle>
+      <FooterTitle>MATTHEW CAR WASH AND CLEANING</FooterTitle>
 
-      {/* Description */}
       <FooterText>
-        Our mission is to empower communities, transform lives, and create a
-        brighter future for women and children through education, healthcare, and
-        support.
+        <strong>Address: </strong>Royal class office number 493, DIP 1 
       </FooterText>
 
-      {/* Social Media Links */}
-      <SocialLinks>
-        <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">
-          <i className="fab fa-facebook-f"></i>
-        </a>
-        <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer">
-          <i className="fab fa-twitter"></i>
-        </a>
-        <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
-          <i className="fab fa-instagram"></i>
-        </a>
-        <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">
-          <i className="fab fa-linkedin"></i>
-        </a>
-      </SocialLinks>
+         <FooterText>
+        <strong>Email: </strong>matthewcarwashandcleaning20@gmail.com
+      </FooterText>
+
+         <FooterText>
+        <strong>Phone: </strong>+971568307510
+      </FooterText>
+
+      {/* Description */}
+     <FooterText>
+  Our mission is to deliver reliable, affordable, and high-quality car wash, home cleaning, and maintenance services that make everyday life easier, cleaner, and more convenient for our clients.
+</FooterText>
+
+
+     <SocialLinks>
+    <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">
+      <FaFacebookF />
+    </a>
+    <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer">
+      <FaTwitter />
+    </a>
+    <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
+      <FaInstagram />
+    </a>
+    <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">
+      <FaLinkedin />
+    </a>
+  </SocialLinks>
 
       {/* Footer Links */}
       <FooterLinks>
       <a href="/">Home</a>
         <a href="/aboutus">About Us</a>
+        {/* <a href="/services">Services</a> */}
         <a href="/gallery">Gallery</a>
-        <a href="/donate">Donate</a>
+  
         <a href="/blogs">Blogs</a>
         <a href="/contactus">Contact Us</a>
       </FooterLinks>
 
       {/* Copyright */}
-      <Copyright>&copy; 2025 The Glory and Children Foundation. All rights reserved.</Copyright>
+      <Copyright>&copy; 2025 Matthew car wash and cleaning. All rights reserved.</Copyright>
     </FooterContainer>
   );
 };

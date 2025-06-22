@@ -263,7 +263,7 @@ import OperationalModule from "./OperationalModule";
 import InterventionStrategies from "./InterventionStrategies";
 import { useNavigate } from "react-router-dom";
 import logo from '../Images2/logo.jpeg';
-import im13 from '../Images2/im13.jpeg'
+import im13 from '../Images3/333.jpg'
 
 // Styled Components
 const PageWrapper = styled.div`
@@ -271,26 +271,51 @@ const PageWrapper = styled.div`
   background: #f9f9f9;
 `;
 
+// const HeroSection = styled.div`
+//   background: url(${im13}) center/cover no-repeat;
+//   color: white;
+//   text-align: center;
+//   padding: 120px 20px;
+//   padding-top:200px;
+// `;
+
+
 const HeroSection = styled.div`
+  position: relative;
   background: url(${im13}) center/cover no-repeat;
   color: white;
   text-align: center;
   padding: 120px 20px;
-  padding-top:200px;
+  padding-top: 200px;
+  z-index: 1;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.2); /* semi-transparent black */
+    z-index: -1;
+  }
 `;
+
 
 const HeroTitle = styled.h1`
   font-size: 48px;
   font-weight: bold;
   text-transform: uppercase;
   margin-bottom: 20px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
 `;
 
 const HeroSubtitle = styled.p`
   font-size: 20px;
   max-width: 800px;
   margin: 0 auto;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 1);
 `;
+
 
 const Section = styled.section`
   padding: 60px 20px;
@@ -312,7 +337,7 @@ const SectionContainer = styled.div`
 
 const SectionTitle = styled.h2`
   font-size: 32px;
-  color: #000050;
+  color: #119458;
   margin-bottom: 20px;
 `;
 
@@ -325,7 +350,7 @@ const SectionText = styled.p`
 
 const IconWrapper = styled.div`
   font-size: 50px;
-  color: #000050;
+  color: #119458;
   margin-bottom: 15px;
 `;
 
@@ -382,83 +407,82 @@ const AboutPage = () => {
       <HeroSection>
     
         <HeroTitle>About Us</HeroTitle>
-        <HeroSubtitle>Empowering Communities. Uplifting Futures. Guided by Love and Purpose.</HeroSubtitle>
+        <HeroSubtitle>Driven by Excellence. Committed to Clean. Powered by Community.</HeroSubtitle>
       </HeroSection>
 
       {/* About Section */}
-      <Section>
-        <SectionContainer>
-          <IconWrapper>
-            <FaHandHoldingHeart />
-          </IconWrapper>
-          <SectionTitle>Who We Are</SectionTitle>
-          <SectionText>
-            The Glory and Children Foundation is a beacon of hope for vulnerable communities, focusing on the holistic upliftment of women, children, and the underprivileged. We believe in transforming lives through empowerment, education, healthcare, and sustainable opportunities. Our goal is simple: impact one life at a time—with love, dignity, and vision.
-          </SectionText>
-        </SectionContainer>
-      </Section>
+     <Section>
+  <SectionContainer>
+    <IconWrapper>
+      <FaHandHoldingHeart />
+    </IconWrapper>
+    <SectionTitle>Who We Are</SectionTitle>
+    <SectionText>
+      At Matthew Car Wash and Cleaning Company, we are committed to redefining cleanliness and customer service excellence. With a passion for perfection and a heart for service, we deliver professional car wash, home cleaning, and maintenance solutions that leave lasting impressions. We aim to build trust, one clean space at a time.
+    </SectionText>
+  </SectionContainer>
+</Section>
 
-      {/* Mission & Vision */}
-      <Section2>
-        <GridContainer>
-          <GridItem style={{ backgroundColor: "rgba(255,255,255,0.9)" }}>
-            <IconWrapper>
-              <FaLightbulb />
-            </IconWrapper>
-            <SectionTitle>Our Mission</SectionTitle>
-            <SectionText>
-              To build a world where every woman and child has access to the tools, resources, and opportunities they need to live a life of dignity, wellness, and empowerment.
-            </SectionText>
-          </GridItem>
+{/* Mission & Vision */}
+<Section2>
+  <GridContainer>
+    <GridItem style={{ backgroundColor: "rgba(255,255,255,0.9)" }}>
+      <IconWrapper>
+        <FaLightbulb />
+      </IconWrapper>
+      <SectionTitle>Our Mission</SectionTitle>
+      <SectionText>
+        To provide top-tier, eco-friendly cleaning and car care services that enhance everyday life, convenience, and comfort for our customers.
+      </SectionText>
+    </GridItem>
 
-          <GridItem style={{ backgroundColor: "rgba(255,255,255,0.9)" }}>
-            <IconWrapper>
-              <FaGlobe />
-            </IconWrapper>
-            <SectionTitle>Our Vision</SectionTitle>
-            <SectionText>
-              A compassionate society where poverty, hunger, and illiteracy are replaced with opportunity, self-worth, and community strength.
-            </SectionText>
-          </GridItem>
-        </GridContainer>
-      </Section2>
+    <GridItem style={{ backgroundColor: "rgba(255,255,255,0.9)" }}>
+      <IconWrapper>
+        <FaGlobe />
+      </IconWrapper>
+      <SectionTitle>Our Vision</SectionTitle>
+      <SectionText>
+        To become the region’s most trusted name in car wash and cleaning services—known for quality, reliability, and genuine care.
+      </SectionText>
+    </GridItem>
+  </GridContainer>
+</Section2>
 
-      {/* Our Goals */}
-      <Section>
-        <SectionTitle>Our Goals</SectionTitle>
-        <GridContainer>
-  <GridItem>
-    <IconWrapper><FaUsers /></IconWrapper>
-    <SectionText>Empower women and girls to become leaders and change-makers in their communities.</SectionText>
-  </GridItem>
+{/* Our Goals */}
+<Section>
+  <SectionTitle>Our Goals</SectionTitle>
+  <GridContainer>
+    <GridItem>
+      <IconWrapper><FaUsers /></IconWrapper>
+      <SectionText>Deliver affordable, high-quality cleaning solutions that exceed customer expectations.</SectionText>
+    </GridItem>
 
-  <GridItem>
-    <IconWrapper><FaUserFriends /></IconWrapper>
-    <SectionText>Support widows, single mothers, and vulnerable women with income-generating opportunities.</SectionText>
-  </GridItem>
+    <GridItem>
+      <IconWrapper><FaUserFriends /></IconWrapper>
+      <SectionText>Create meaningful job opportunities and empower local communities through our services.</SectionText>
+    </GridItem>
 
-  <GridItem>
-    <IconWrapper><FaHandshake /></IconWrapper>
-    <SectionText>Provide educational access and resources for young girls and underserved children.</SectionText>
-  </GridItem>
+    <GridItem>
+      <IconWrapper><FaHandshake /></IconWrapper>
+      <SectionText>Build long-lasting relationships with clients through honesty, excellence, and care.</SectionText>
+    </GridItem>
 
-  <GridItem>
-    <IconWrapper><FaHandsHelping /></IconWrapper>
-    <SectionText>Offer maternal and child health support for improved family wellbeing.</SectionText>
-  </GridItem>
+    <GridItem>
+      <IconWrapper><FaHandsHelping /></IconWrapper>
+      <SectionText>Introduce innovative, eco-conscious cleaning methods to protect the environment.</SectionText>
+    </GridItem>
 
-  <GridItem>
-    <IconWrapper><FaPeace /></IconWrapper>
-    <SectionText>Promote safe, inclusive environments where women and children can thrive.</SectionText>
-  </GridItem>
+    <GridItem>
+      <IconWrapper><FaPeace /></IconWrapper>
+      <SectionText>Maintain a peaceful, respectful work culture that reflects in every customer interaction.</SectionText>
+    </GridItem>
 
-  <GridItem>
-    <IconWrapper><FaComment /></IconWrapper>
-    <SectionText>Advocate for the rights and voices of women and children in decision-making spaces.</SectionText>
-  </GridItem>
-</GridContainer>
-
-      </Section>
+    <GridItem>
+      <IconWrapper><FaComment /></IconWrapper>
+      <SectionText>Listen to customer feedback and evolve continuously to meet changing needs.</SectionText>
+    </GridItem>
+  </GridContainer>
+</Section>
 
       {/* Modules */}
       {/* <OperationalModule />

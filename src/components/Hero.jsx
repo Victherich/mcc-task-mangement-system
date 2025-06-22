@@ -1,12 +1,12 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
-import heroVideo from "../Images2/h1.mp4";
-import heroVideo2 from "../Images2/h2.mp4";
-import heroVideo1 from "../Images2/im16.mp4";
-import heroVideo3 from "../Images2/media2.mp4";
-import heroVideo4 from "../Images2/im18.mp4";
-import herobg from '../Images2/herobg.jpg'
+import heroVideo from "../Images3/h1.mp4";
+import heroVideo2 from "../Images3/h2.mp4";
+import heroVideo1 from "../Images3/h3.mp4";
+import heroVideo3 from "../Images3/h4.mp4";
+import heroVideo4 from "../Images3/h1.mp4";
+import herobg from '../Images3/333.jpg'
 
 // Styled Components
 const HeroContainer = styled.section`
@@ -20,6 +20,7 @@ const HeroContainer = styled.section`
   background-image:url(${herobg});
   background-size:cover;
   background-position:center;
+  padding-top:60px;
 
   video {
     position: absolute;
@@ -39,10 +40,10 @@ const HeroText = styled.div`
 `;
 
 const HeroTitle = styled.h1`
-  font-size: 3rem;
+  font-size: 4rem;
   // font-weight: 200;
   color: white;
-  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 1);
   opacity: 0;
   transform: translateY(50px);
   animation: ${(props) => (props.isVisible ? "flyInFromBottom 1.5s ease-out forwards" : "none")};
@@ -50,11 +51,11 @@ const HeroTitle = styled.h1`
   // font-family: "Brush Script MT", "Brush Script Std", cursive;
 
   @media (max-width: 768px) {
-    font-size: 2rem;
+    font-size: 3rem;
   }
 
   @media (max-width: 428px) {
-    font-size: 2rem;
+    font-size: 3rem;
   }
 
   @keyframes flyInFromBottom {
@@ -183,10 +184,10 @@ const Hero = () => {
       </video>}
 
       <HeroText>
-        <HeroTitle isVisible={isVisible}>THE GLORY AND CHILDREN FOUNDATION</HeroTitle>
+        <HeroTitle isVisible={isVisible}>MATTHEW CAR WASH <br/>AND CLEANING [MCC] </HeroTitle>
         {/* <HeroTitle2 isVisible={isVisible}>AFRICAN JOURNAL OF GENERAL AGRICULTURE</HeroTitle2> */}
         
-        <HeroSubtitle isVisible={isVisible}>"Empowering Women, Uplifting Children and Transforming Futures."</HeroSubtitle>
+        <HeroSubtitle isVisible={isVisible}>"Keeping safe environments"</HeroSubtitle>
     
       </HeroText>
     </HeroContainer>

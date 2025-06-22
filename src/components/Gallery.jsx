@@ -419,19 +419,20 @@ import styled, { keyframes } from "styled-components";
 import { FaTimes } from "react-icons/fa";
 
 // Image Imports
-import im3 from '../Images2/im3.jpeg';
-import im4 from '../Images2/im4.jpeg';
-import im5 from '../Images2/im5.jpeg';
-import im6 from '../Images2/im6.jpeg';
-import im7 from '../Images2/im7.jpeg';
-import im8 from '../Images2/im8.jpeg';
-import im9 from '../Images2/im9.jpeg';
-import im10 from '../Images2/im10.jpeg';
-import im11 from '../Images2/im11.jpeg';
-import im12 from '../Images2/im12.jpeg';
-import im13 from '../Images2/im13.jpeg';
-import im14 from '../Images2/im14.jpeg';
+import im3 from '../Images3/p2.png';
+import im4 from '../Images3/p3.png';
+import im5 from '../Images3/p4.png';
+import im6 from '../Images3/p5.png';
+import im7 from '../Images3/p6.png';
+import im8 from '../Images3/p7.png';
+import im9 from '../Images3/p8.png';
+import im10 from '../Images3/p9.png';
+import im11 from '../Images3/333.jpg';
+import im12 from '../Images3/p11.jpg';
+import im13 from '../Images3/p12.jpg';
+import im14 from '../Images3/p4.png';
 import Hero4 from "./Hero4";
+import { useLocation, useNavigate } from "react-router-dom";
 
 // Floating Animation
 const floating = keyframes`
@@ -507,45 +508,13 @@ const GalleryGrid = styled.div`
   margin: auto;
 `;
 
-// Image Frame & Hover Effects
-// const GalleryItem = styled.div`
-//   position: relative;
-//   cursor: pointer;
-//   overflow: hidden;
-//   border-radius: ${(props) => props.border || "10px"};
-//   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
-//   grid-column: ${(props) => props.columnSpan || "span 1"};
-//   grid-row: ${(props) => props.rowSpan || "span 1"};
-// //   border: 6px solid rgba(0, 0, 255, 0.5); /* 🔵 Blue Frame */
-
-//   &:hover img {
-//     transform: scale(1.1);
-//     filter: brightness(80%);
-//   }
-// `;
-
-// const GalleryItem = styled.div`
-//   position: relative;
-//   cursor: pointer;
-//   overflow: hidden;
-//   border-radius: ${(props) => props.border || "10px"};
-//   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
-//   grid-column: ${(props) => props.columnSpan || "span 1"};
-//   grid-row: ${(props) => props.rowSpan || "span 1"};
-//   border: ${(props) => props.border || "10px"} solid rgba(0,0,255,0.5); /* 🔵 Fixed Blue Border */
-  
-//   &:hover img {
-//     transform: scale(1.1);
-//     filter: brightness(80%);
-//   }
-// `;
 
 const GalleryItem = styled.div`
   position: relative;
   cursor: pointer;
   overflow: hidden;
   border-radius: ${(props) => props.border || "10px"};
-  border: ${(props) => props.border || "10px"} solid #000050; /* 🔵 Single Blue Border */
+  border: ${(props) => props.border || "10px"} solid #119458; /* 🔵 Single Blue Border */
   grid-column: ${(props) => props.columnSpan || "span 1"};
   grid-row: ${(props) => props.rowSpan || "span 1"};
 
@@ -613,6 +582,24 @@ const CloseButton = styled.button`
   }
 `;
 
+const Button = styled.button`
+  background: white;
+  color: #119458;
+  padding: 14px 24px;
+  font-size: 16px;
+  font-weight: bold;
+  border: 2px solid #119458;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 30px;
+  transition: 0.3s;
+
+  &:hover {
+    background: #119458;
+    color: white;
+  }
+`;
+
 const images = [
   { src: im3, columnSpan: "span 2", rowSpan: "span 1", border: "20px", border2: "1px" },
   { src: im4, columnSpan: "span 1", rowSpan: "span 2", border: "30px", border2:"1px" },
@@ -630,6 +617,8 @@ const images = [
 
 const Gallery = () => {
   const [selectedImage, setSelectedImage] = useState(null);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const handleImageClick = (imgSrc) => {
     setSelectedImage(imgSrc);
@@ -647,7 +636,23 @@ const Gallery = () => {
       <p style={{fontStyle:"italic", marginBottom:"20px", fontWeight:"bold", color:"rgba(0,0,255,0.7)"}}>(Click image to expand)</p>
 
       {/* Irregular Image Grid */}
-      <GalleryGrid>
+     {location.pathname==='/'&& <GalleryGrid>
+        {images.slice(0,6).map((img, index) => (
+          <GalleryItem
+            key={index}
+            columnSpan={img.columnSpan}
+            rowSpan={img.rowSpan}
+            border={img.border}
+            onClick={() => handleImageClick(img.src)}
+          >
+            <GalleryImage src={img.src} alt={`Gallery Image ${index + 1}`} border={img.border2} />
+          </GalleryItem>
+        ))}
+      </GalleryGrid>}
+
+
+       {/* Irregular Image Grid */}
+     {location.pathname==='/gallery'&& <GalleryGrid>
         {images.map((img, index) => (
           <GalleryItem
             key={index}
@@ -659,7 +664,9 @@ const Gallery = () => {
             <GalleryImage src={img.src} alt={`Gallery Image ${index + 1}`} border={img.border2} />
           </GalleryItem>
         ))}
-      </GalleryGrid>
+      </GalleryGrid>}
+
+      {location.pathname==='/'&&<Button onClick={()=>navigate('/gallery')}>Explore More</Button>}
 
       {/* Lightbox */}
       {selectedImage && (

@@ -1,113 +1,283 @@
+// import React from "react";
+// import styled from "styled-components";
+// import CountUp from "react-countup";
+// import { FaSchool, FaHeartbeat, FaHandsHelping, FaUsers } from "react-icons/fa";
+
+// // Styled Components
+// const ImpactSection = styled.section`
+//   background: linear-gradient(135deg, rgba(0,0,80,0.1), #119458);
+//   color: white;
+//   padding: 80px 20px;
+//   text-align: center;
+// `;
+
+// const Container = styled.div`
+//   max-width: 1100px;
+//   margin: auto;
+//   display: flex;
+//   flex-wrap: wrap;
+//   justify-content: center;
+//   gap: 30px;
+// `;
+
+// const Title = styled.h2`
+//   font-size: 32px;
+//   font-weight: bold;
+//   text-transform: uppercase;
+//   margin-bottom: 20px;
+//   letter-spacing: 2px;
+//   color:white;
+//   text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.9);
+// `;
+
+// const Subtitle = styled.p`
+//   font-size: 1.5rem;
+//   max-width: 800px;
+//   margin: 0 auto 40px;
+//   line-height: 1.6;
+//   color: white;
+//   text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.9);
+// `;
+
+// const StatCard = styled.div`
+//   background: rgba(255, 255, 255, 0.2);
+//   padding: 25px;
+//   width: 250px;
+//   border-radius: 15px;
+//   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+//   transition: 0.3s;
+  
+//   &:hover {
+//     transform: scale(1.05);
+//   }
+// `;
+
+// const Icon = styled.div`
+//   font-size: 40px;
+//   color: #119458;
+//   margin-bottom: 10px;
+//   text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.9);
+// `;
+
+// const Count = styled.h3`
+//   font-size: 40px;
+//   font-weight: bold;
+//   color: white;
+//   text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.9);
+// `;
+
+// const Label = styled.p`
+//   font-size: 16px;
+//   font-weight: bold;
+//   color:#333;
+//   // color: #ddd;
+//   // text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.9);
+// `;
+
+// // Impact Component
+// const Impact = () => {
+//   return (
+//     <ImpactSection id="impact">
+//       <Title>Our Transformative Impact 🌍</Title>
+//       <Subtitle>
+//         Through our relentless commitment to community development, we have empowered individuals, improved lives, and made a lasting difference across regions.
+//       </Subtitle>
+      
+//       <Container>
+//         {/* Schools Built */}
+//         <StatCard>
+//           <Icon><FaSchool /></Icon>
+//           <Count><CountUp start={0} end={60} duration={4} />+</Count>
+//           <Label>Educational Facilities Established 🏫</Label>
+//         </StatCard>
+
+//         {/* Healthcare Centers */}
+//         <StatCard>
+//           <Icon><FaHeartbeat /></Icon>
+//           <Count><CountUp start={0} end={40} duration={4} />+</Count>
+//           <Label>Healthcare Centers Supported ❤️</Label>
+//         </StatCard>
+
+//         {/* Volunteers */}
+//         <StatCard>
+//           <Icon><FaHandsHelping /></Icon>
+//           <Count><CountUp start={0} end={600} duration={4} />+</Count>
+//           <Label>Dedicated Volunteers Mobilized 💪</Label>
+//         </StatCard>
+
+//         {/* Lives Impacted */}
+//         <StatCard>
+//           <Icon><FaUsers /></Icon>
+//           <Count><CountUp start={0} end={15000} duration={4} />+</Count>
+//           <Label>Lives Uplifted & Transformed 🌟</Label>
+//         </StatCard>
+//       </Container>
+//     </ImpactSection>
+//   );
+// };
+
+// export default Impact;
+
+
+
+
 import React from "react";
 import styled from "styled-components";
 import CountUp from "react-countup";
-import { FaSchool, FaHeartbeat, FaHandsHelping, FaUsers } from "react-icons/fa";
+import { FaCar, FaBroom, FaSmile, FaPeopleCarry } from "react-icons/fa";
+import starsGif from '../Images3/galaxy.gif'
 
 // Styled Components
+// const ImpactSection = styled.section`
+//   background: linear-gradient(135deg, rgba(0,0,80,0.1), #119458);
+//   color: white;
+//   padding: 80px 20px;
+//   text-align: center;
+// `;
+
+
 const ImpactSection = styled.section`
-  background: linear-gradient(135deg, #000030 0%, #2575fc 100%);
-  color: #fff;
-  padding: 100px 20px;
+  position: relative;
+  // padding: 50px 20px;
   text-align: center;
+  overflow: hidden;
+//   z-index: 1;
+  background: url(${starsGif}) center/cover no-repeat;
+  padding-top:50px;
+  padding-bottom:50px;
+  padding-left:20px;
+  padding-right:20px;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    
+    opacity: 0.2;
+    z-index: -2;
+    animation: moveStars 60s linear infinite;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: linear-gradient(145deg, rgba(15,0,26,0.95), rgba(18,0,43,0.9));
+    z-index: -1;
+  }
+
+  @keyframes moveStars {
+    from {
+      background-position: 0 0;
+    }
+    to {
+      background-position: 1000px 1000px;
+    }
+  }
 `;
 
+
 const Container = styled.div`
-  max-width: 1200px;
+  max-width: 1100px;
   margin: auto;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 40px;
+  gap: 30px;
 `;
 
 const Title = styled.h2`
-  font-size: 38px;
-  font-weight: 800;
+  font-size: 32px;
+  font-weight: bold;
   text-transform: uppercase;
-  margin-bottom: 16px;
-  letter-spacing: 1.5px;
-`;
-
-const USP = styled.p`
-  font-size: 20px;
-  font-weight: 600;
-  color: #ffdd57;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
+  letter-spacing: 2px;
+  color: white;
+  // text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.9);
 `;
 
 const Subtitle = styled.p`
-  font-size: 18px;
-  max-width: 900px;
-  margin: 0 auto 50px;
-  line-height: 1.7;
-  color: #f0f0f0;
+  font-size: 1.5rem;
+  max-width: 800px;
+  margin: 0 auto 40px;
+  line-height: 1.6;
+  color: white;
+  // text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.9);
 `;
 
 const StatCard = styled.div`
-  background: rgba(255, 255, 255, 0.15);
-  padding: 30px 25px;
-  width: 260px;
-  border-radius: 20px;
-  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
-  text-align: center;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 25px;
+  width: 250px;
+  border-radius: 15px;
+  // box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
   transition: 0.3s;
-
+  
   &:hover {
-    transform: translateY(-10px);
-    background: rgba(255, 255, 255, 0.25);
+    transform: scale(1.05);
   }
 `;
 
 const Icon = styled.div`
-  font-size: 48px;
-  margin-bottom: 15px;
-  color: #fff;
+  font-size: 40px;
+  // color: #119458;
+  color:white;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.9);
 `;
 
 const Count = styled.h3`
-  font-size: 42px;
+  font-size: 40px;
   font-weight: bold;
+  color: white;
+  // text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.9);
 `;
 
 const Label = styled.p`
   font-size: 16px;
-  font-weight: 600;
-  margin-top: 5px;
+  font-weight: bold;
+  // color: #333;
+  color: white;
 `;
 
 // Impact Component
 const Impact = () => {
   return (
     <ImpactSection id="impact">
-      <Title>Our Impacts 🌟</Title>
-      <USP>Feeding Hope 🍲 | Empowering Women 👩‍👧 | Uplifting Children 🧒💖</USP>
+      <Title>Our Impacts ✨</Title>
       <Subtitle>
-        At The Glory and Children Foundation, we believe that no woman or child should be left behind. From providing meals and basic needs to supporting education and healthcare — we are changing lives every single day.
+        We are committed to delivering spotless environments and peace of mind. From cars to commercial spaces — our numbers speak for themselves.
       </Subtitle>
-
+      
       <Container>
+        {/* Cars Washed */}
         <StatCard>
-          <Icon><FaSchool /></Icon>
-          <Count><CountUp start={0} end={20} duration={4} />+</Count>
-          <Label>Children Educated 🏫</Label>
+          <Icon><FaCar /></Icon>
+          <Count><CountUp start={0} end={12000} duration={4} />+</Count>
+          <Label>Vehicles Washed 🚗</Label>
         </StatCard>
 
+        {/* Properties Cleaned */}
         <StatCard>
-          <Icon><FaHeartbeat /></Icon>
-          <Count><CountUp start={0} end={30} duration={4} />+</Count>
-          <Label>Healthcare Drives ❤️</Label>
+          <Icon><FaBroom /></Icon>
+          <Count><CountUp start={0} end={850} duration={4} />+</Count>
+          <Label>Homes & Offices Cleaned 🧹</Label>
         </StatCard>
 
+        {/* Satisfied Clients */}
         <StatCard>
-          <Icon><FaHandsHelping /></Icon>
-          <Count><CountUp start={0} end={100} duration={4} />+</Count>
-          <Label>Volunteers Empowered 💪</Label>
+          <Icon><FaSmile /></Icon>
+          <Count><CountUp start={0} end={5000} duration={4} />+</Count>
+          <Label>Happy Clients 😊</Label>
         </StatCard>
 
+        {/* Cleaning Staff */}
         <StatCard>
-          <Icon><FaUsers /></Icon>
-          <Count><CountUp start={0} end={10000} duration={4} />+</Count>
-          <Label>Lives Impacted 🌍</Label>
+          <Icon><FaPeopleCarry /></Icon>
+          <Count><CountUp start={0} end={75} duration={4} />+</Count>
+          <Label>Dedicated Team Members 👷‍♂️</Label>
         </StatCard>
       </Container>
     </ImpactSection>
@@ -115,3 +285,4 @@ const Impact = () => {
 };
 
 export default Impact;
+

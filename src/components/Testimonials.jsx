@@ -1,13 +1,40 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import im1 from '../Images2/logo.jpeg';
-import im2 from '../Images2/logo.jpeg';
-import im3 from '../Images2/logo.jpeg';
-import im4 from '../Images2/logo.jpeg';
 
-// Styled Components
+// Replace these with your actual images or links
+const testimonials = [
+  {
+    name: "Amina Yusuf",
+    role: "Regular Car Wash Client",
+    feedback:
+      "Always spotless! The monthly plan saves me money, and the team is incredibly polite and professional.",
+    image: "https://randomuser.me/api/portraits/women/44.jpg",
+  },
+  {
+    name: "Peter Onuoha",
+    role: "Homeowner",
+    feedback:
+      "Their home cleaning service is top-notch. My house has never felt this fresh. I highly recommend them!",
+    image: "https://randomuser.me/api/portraits/men/46.jpg",
+  },
+  {
+    name: "Chinyere Okafor",
+    role: "Garden Maintenance Subscriber",
+    feedback:
+      "They’ve turned my backyard into a paradise! Reliable and consistent — truly worth every naira.",
+    image: "https://randomuser.me/api/portraits/women/65.jpg",
+  },
+  {
+    name: "Tunde Bello",
+    role: "Tyre & Engine Service User",
+    feedback:
+      "Very efficient tyre replacement and the engine cleaning gave my car a new life. Superb job!",
+    image: "https://randomuser.me/api/portraits/men/55.jpg",
+  },
+];
+
 const CarouselSection = styled.section`
-  background: #f8f9fa;
+  background: #f0fdf5;
   padding: 80px 20px;
   text-align: center;
 `;
@@ -15,19 +42,18 @@ const CarouselSection = styled.section`
 const Title = styled.h2`
   font-size: 42px;
   font-weight: 900;
-  color: #1e3a8a;
+  color: #0c5e36;
   margin-bottom: 16px;
   text-transform: uppercase;
 
-
-  @media(max-width:428px){
-  font-size:2rem;
+  @media (max-width: 428px) {
+    font-size: 2rem;
   }
 `;
 
 const Subtitle = styled.p`
   font-size: 18px;
-  color: #4b5563;
+  color: #119458;
   margin-bottom: 60px;
   font-weight: 500;
   line-height: 1.7;
@@ -46,12 +72,11 @@ const CarouselTrack = styled.div`
   display: flex;
   transition: transform 0.5s ease-in-out;
 
-@media(max-width:884px){
-  flex-direction:column;
-  align-items:center;
-  gap:20px;
-}
-
+  @media (max-width: 884px) {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
 `;
 
 const TestimonialCard = styled.div`
@@ -60,9 +85,14 @@ const TestimonialCard = styled.div`
   border-radius: 20px;
   box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.1);
   width: 270px;
-  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
-  text-align: center;
   margin: 0 10px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-10px);
+    box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.15);
+  }
 `;
 
 const ProfileImage = styled.img`
@@ -71,18 +101,19 @@ const ProfileImage = styled.img`
   border-radius: 50%;
   object-fit: cover;
   margin-bottom: 15px;
+  border: 3px solid #119458;
 `;
 
 const Name = styled.h3`
   font-size: 20px;
   font-weight: 700;
-  color: #1e3a8a;
+  color: #0c5e36;
   margin-bottom: 5px;
 `;
 
 const Role = styled.p`
   font-size: 15px;
-  color: #6b7280;
+  color: #4b5563;
   margin-bottom: 15px;
 `;
 
@@ -92,75 +123,27 @@ const Feedback = styled.p`
   line-height: 1.5;
 `;
 
-const ArrowButton = styled.button`
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(0, 0, 0, 0.3);
-  color: white;
-  border: none;
-  padding: 10px;
-  border-radius: 50%;
-  font-size: 24px;
-  cursor: pointer;
-  z-index: 10;
-
-  ${(props) =>
-    props.left
-      ? `left: 10px;`
-      : `right: 10px;`}
-
-  &:hover {
-    background: rgba(0, 0, 0, 0.6);
-  }
-`;
-
 const Testimonials = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const testimonials = [
-    {
-      name: "Mary Nnedi",
-      role: "Beneficiary",
-      feedback:
-        "Thanks to this foundation, I was able to continue my education. Their scholarship program has truly changed my life.",
-      image: im1,
-    },
-    {
-      name: "Chinwe Nancy",
-      role: "Volunteer",
-      feedback:
-        "Volunteering with this foundation has been the most rewarding experience of my life. The smiles we create are priceless.",
-      image: im2,
-    },
-    {
-      name: "Sarah Leonard",
-      role: "Donor",
-      feedback:
-        "I am proud to support this incredible organization. They are truly making a difference where it's needed most.",
-      image: im3,
-    },
-    {
-      name: "David Kim",
-      role: "Partner",
-      feedback:
-        "Partnering with this foundation has been a fantastic journey. Their commitment to social impact is second to none.",
-      image: im4,
-    },
-  ];
 
   const handlePrevClick = () => {
-    setCurrentIndex((prevIndex) => (prevIndex === 0 ? testimonials.length - 1 : prevIndex - 1));
+    setCurrentIndex((prevIndex) =>
+      prevIndex === 0 ? testimonials.length - 1 : prevIndex - 1
+    );
   };
 
   const handleNextClick = () => {
-    setCurrentIndex((prevIndex) => (prevIndex === testimonials.length - 1 ? 0 : prevIndex + 1));
+    setCurrentIndex((prevIndex) =>
+      prevIndex === testimonials.length - 1 ? 0 : prevIndex + 1
+    );
   };
 
   return (
     <CarouselSection id="testimonials">
-      <Title>What Our Community Says 🗣️</Title>
+      <Title>What Our Clients Say 🧼</Title>
       <Subtitle>
-        Hear from those whose lives have been touched by our work. Their stories inspire us every day.
+        We pride ourselves on exceptional cleaning, care, and customer satisfaction.
+        Here’s what our loyal clients have to say.
       </Subtitle>
 
       <CarouselWrapper>
@@ -176,11 +159,6 @@ const Testimonials = () => {
             </TestimonialCard>
           ))}
         </CarouselTrack>
-
-        {/* <ArrowButton left onClick={handlePrevClick}>
-          {"<"}
-        </ArrowButton> */}
-        {/* <ArrowButton onClick={handleNextClick}>{">"}</ArrowButton> */}
       </CarouselWrapper>
     </CarouselSection>
   );

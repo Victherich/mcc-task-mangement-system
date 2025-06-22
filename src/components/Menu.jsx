@@ -16,7 +16,7 @@ const slideUp = keyframes`
 
 const MenuContainer = styled.div`
   position: fixed;
-  top: 90px;
+  top: 70px;
   right: 10px;
   z-index: 1000;
   
@@ -30,16 +30,24 @@ const MenuContainer = styled.div`
     }
   }
 
+   @media(max-width:428px){
+    top:10px;
+
+    span{
+        display:none;
+    }
+  }
+
   
 `;
 
 const MenuButton = styled.div`
-//   background: #ff5722;
-  background:#3498db;
+  background: #119458;
+  // background:rgb(98, 192, 255);
   color: white;
-  font-size: 18px;
+  font-size: 14px;
   font-weight: bold;
-  padding: 12px 20px;
+  padding: 10px 20px;
   border-radius: 25px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
   cursor: pointer;
@@ -90,13 +98,12 @@ const MenuItem = styled.li`
 
 // Icons
 const menuItems = [
-  { name: "🏠 Home", link: "/" },
-  { name: "ℹ️ About Us", link: "/aboutus" },
+  { name: "🏡 Home", link: "/" },
+  { name: "👥 About Us", link: "/aboutus" },
+  // { name: "💼 Services", link: "/services" },
   { name: "🖼️ Gallery", link: "/gallery" },
-  { name: "💖 Donate", link: "/donate" },
-    { name: "📚 Blogs", link: "/blogs" },
-   
-  { name: "📞 Contact us", link: "/contactus" },
+  { name: "📰 Blogs", link: "/blogs" },
+  { name: "☎️ Contact Us", link: "/contactus" },
 ];
 
 const Menu = () => {

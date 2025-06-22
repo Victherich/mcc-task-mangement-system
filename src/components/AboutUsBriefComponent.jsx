@@ -56,9 +56,9 @@ const AboutUsBrief = () => {
     <div className="about-us-brief-section">
       <div className="about-us-brief-content">
         <div className="about-us-brief-text">
-          <h2>🚀 ABOUT THE FOUNDATION</h2>
-          <p><strong style={{color:"#000050"}}>My Vision:</strong>"I envision a world where women, young ladies, and children are free from hunger, fear, and neglect — a world where they rise with dignity, live with purpose, and walk in glory."</p>
-          <p><strong style={{color:"#000050"}}>My Mission:</strong> "My mission is to restore hope by feeding the hungry, supporting the vulnerable, and meeting the basic needs of women, young ladies, and children — while empowering them through love, care, and opportunity for a better future."</p>
+          <h2>🚀 ABOUT MCC</h2>
+          <p><strong style={{color:"#119458"}}>My Vision:</strong>"To create cleaner, safer, and more dignified environments for communities — where families, women, and children can thrive in cleanliness, comfort, and care."</p>
+          <p><strong style={{color:"#119458"}}>My Mission:</strong> "Our mission is to go beyond cleaning — to restore dignity and peace of mind by delivering exceptional car wash and cleaning services, supporting the well-being of women, young ladies, and children, and empowering lives through safety, hygiene, and hope."</p>
      
           <button className="more-about-btn" onClick={handleMoreClick}>
             Learn More
@@ -68,10 +68,10 @@ const AboutUsBrief = () => {
         <div className="about-us-brief-image">
           {/* Uncomment and use an image if needed */}
           {/* <img src={briefImage} alt="About Us" /> */}
-         <div className='name'>
+         {/* <div className='name'>
          <p>Glory Robinson</p>
          <p>CEO - The Glory and Children Foundation</p>
-         </div>
+         </div> */}
         </div>
       </div>
     </div>

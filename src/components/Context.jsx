@@ -151,74 +151,15 @@
 
 import React, { createContext, useEffect, useState } from 'react';
 import Swal from 'sweetalert2';
-import { db } from '../components/lib/firebase'; // Adjust if needed
-import { collection, getDocs } from 'firebase/firestore';
+
 
 export const Context = createContext();
 
 const ContextProvider = ({ children }) => {
-    const currentAppId = "1";
-  const [apps, setApps] = useState([]);
-  const appRef = collection(db, 'apps_versions');
 
-  // Fetch stored versions from localStorage
-  const getStoredVersions = () => {
-    const stored = localStorage.getItem('app_versions');
-    return stored ? JSON.parse(stored) : {};
-  };
-
-  // Save new versions to localStorage
-  const saveVersionsToStorage = (versionMap) => {
-    localStorage.setItem('app_versions', JSON.stringify(versionMap));
-  };
-
-  const fetchApps = async (showAlertOnChange = false) => {
-    const data = await getDocs(appRef);
-    const fetchedApps = data.docs.map((doc) => ({
-      id: doc.id,
-      ...doc.data(),
-    }));
-
-    const currentApp = fetchedApps.find((app) => app.appId === currentAppId);
-    if (!currentApp) return;
-
-    const storedVersions = getStoredVersions();
-    const prevVersion = storedVersions[currentAppId];
-
-    if (showAlertOnChange && prevVersion && prevVersion !== currentApp.version) {
-        Swal.fire({
-            title: `This site has a new update by the Developer!`,
-            text: `Kindly click the 'UPDATE" button to catch up`,
-          icon: 'info',
-          showCancelButton: true,
-          confirmButtonText: 'Update',
-          cancelButtonText: 'Remind me later',
-        }).then((result) => {
-          if (result.isConfirmed) {
-            // Save new version only if user confirms
-            const versionMap = { ...storedVersions, [currentAppId]: currentApp.version };
-            saveVersionsToStorage(versionMap);
-            window.location.reload();
-          }
-        });
-      } else {
-        // No version change or first-time load — just save it
-        const versionMap = { ...storedVersions, [currentAppId]: currentApp.version };
-        saveVersionsToStorage(versionMap);
-      }
-
- 
-    setApps(fetchedApps);
-  };
-
-  useEffect(() => {
-    fetchApps(true); // Check immediately
-    const interval = setInterval(() => fetchApps(true), 5*60*1000);
-    return () => clearInterval(interval);
-  }, [currentAppId]);
 
   return (
-    <Context.Provider value={{ apps }}>
+    <Context.Provider value={{  }}>
       {children}
     </Context.Provider>
   );

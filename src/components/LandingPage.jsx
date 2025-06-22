@@ -2,7 +2,7 @@ import React from 'react'
 import Hero from './Hero'
 import AboutComponent from './AboutComponent'
 import Impact from './Imapact'
-import Programs from './Programs'
+import Programs from './Services'
 import GetInvolved from './GetInvolved'
 import Testimonials from './Testimonials'
 import News from './News'
@@ -12,6 +12,8 @@ import AboutUsBrief from './AboutUsBriefComponent'
 import { useEffect , useState} from 'react'
 import { useLocation } from 'react-router-dom'
 import Events from './Events'
+import Services from './Services'
+import Gallery from './Gallery'
 
 const LandingPage = () => {
   const location = useLocation();
@@ -46,11 +48,12 @@ const LandingPage = () => {
           
       {/* <AboutComponent/> */}
       <Impact/>
-      <Events/>
-      <Programs/>
-      <GetInvolved/>
+      {/* <Events/> */}
+      <Services/>
+      <Gallery/>
+      {/* <GetInvolved/> */}
       
-      <Hero2/>
+      {/* <Hero2/> */}
       <Testimonials/>
       {/* <News/> */}
       {/* <FAQ/> */}

@@ -1,6 +1,6 @@
 /* Styles for About Us Brief Section */
 .about-us-brief-section {
-    background-color: #f4f4f4;
+    /* background-color: #f4f4f4; */
     padding: 50px 20px;
     display: flex;
     justify-content: center;
@@ -30,7 +30,7 @@
   
   .about-us-brief-text h2 {
     font-size: 2rem;
-    color: #000050;
+    color: #119458;
     margin-bottom: 20px;
   }
   
@@ -58,7 +58,7 @@
     padding: 10px 20px;
     font-size: 1rem;
     color: white;
-    background-color: #000050;
+    background-color: #119458;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -75,7 +75,7 @@
   .about-us-brief-image{
     width: 30%;
     height:400px;
-    background-image: url("../Images2/dp1.jpeg");
+    background-image: url("../Images3/p2.png");
     background-size: cover;
     border-radius: 50%;
     display: flex;
