@@ -28,6 +28,7 @@ import AdminForgotPassword from './components/AdminForgotPassword';
 import AdminResetPassword from './components/AdminResetPassword';
 
 import GoogleTranslate from './components/GoogleTranslate';
+import BookingPage from './components/BookingPage';
 
 function App() {
   return (
@@ -48,6 +49,7 @@ function App() {
         <Route path='/gallery' element={<Gallery/>}/>
         <Route path='/inecengagement' element={<INECEngagement/>}/>
         <Route path='/blog/:articleId' element={<ArticleDetail/>}/>
+        <Route path='/bookingpage' element={<BookingPage/>}/>
 
 
    {/* Admin routes */}

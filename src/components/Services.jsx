@@ -283,7 +283,7 @@ import p2 from '../Images3/p3.png'
 import { useNavigate } from "react-router-dom";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
-import BookingModal from "./BookingModal"; // make sure this file exists
+import BookingModal from "./BookingPage"; // make sure this file exists
 import { db } from '../firebaseConfig'; // Import your Firestore instance
 import { collection, getDocs } from 'firebase/firestore'; // Import Firestore functions
 
@@ -447,6 +447,7 @@ const ErrorText = styled.p`
 const Services = () => {
     const navigate = useNavigate();
     const [services, setServices] = useState([]); // State to store fetched services
+       const [services2, setServices2] = useState([]); // State to store fetched services
     const [loading, setLoading] = useState(true); // Loading state
     const [error, setError] = useState(null); // Error state
 
@@ -475,10 +476,13 @@ const Services = () => {
         fetchServices();
     }, []); // Empty dependency array means this runs once on mount
 
-    const openModal = (service) => {
-        setSelectedService(service);
-        setModalOpen(true);
-    };
+    const openBookingPage = (service) => {
+    
+  // Save to localStorage
+  localStorage.setItem("selectedService", JSON.stringify(service));
+  navigate('/bookingpage')
+};
+
 
     const closeModal = () => {
         setModalOpen(false);
@@ -489,6 +493,33 @@ const Services = () => {
         alert(`Booking confirmed for ${title} - ${pkg}`);
         closeModal();
     };
+
+
+
+
+   // Fetch services from Firestore when the component mounts
+    useEffect(() => {
+        const fetchServices = async () => {
+            try {
+                const servicesCollectionRef = collection(db, 'services2');
+                const querySnapshot = await getDocs(servicesCollectionRef);
+                const fetchedServices = querySnapshot.docs.map(doc => ({
+                    id: doc.id,
+                    ...doc.data()
+                }));
+                setServices2(fetchedServices);
+            } catch (err) {
+                console.error("Error fetching services:", err);
+                setError("Failed to load services. Please try again later.");
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchServices();
+    }, []); // Empty dependency array means this runs once on mount
+
+
 
     if (loading) {
         return (
@@ -561,20 +592,39 @@ const Services = () => {
                                     <PriceItem>No packages listed.</PriceItem>
                                 )}
                             </PriceList>
-                            <Button onClick={() => openModal(service)}>Book Now</Button>
+                            <Button onClick={() => openBookingPage(service)}>Book Now</Button>
+                        </Card>
+                    ))}
+                </CardGrid>
+
+                   <CardGrid style={{marginTop:"50px"}}>
+                    {/* Map over the fetched services instead of hardcoded data */}
+                    {services2.map((service) => (
+                        <Card key={service.id}> {/* Use service.id as key */}
+                            {/* Use service.imageUrl if available, fallback to p2 */}
+                            <Image src={service.imageUrl || p2} alt={service.title || 'Service Image'} />
+                            <ServiceTitle>{service.title || 'Untitled Service'}</ServiceTitle>
+                            {/* Display the new description field */}
+                            {service.description && <ServiceDescription>{service.description}</ServiceDescription>}
+                            <PriceList>
+                                {/* Check if packages exist and are an array before mapping */}
+                                {service.packages && Array.isArray(service.packages) && service.packages.length > 0 ? (
+                                    service.packages.map((p, i) => (
+                                        <PriceItem key={i}>
+                                            {p.name} {p.price !== null ? `- AED ${p.price}` : ''}
+                                        </PriceItem>
+                                    ))
+                                ) : (
+                                    <PriceItem>No packages listed.</PriceItem>
+                                )}
+                            </PriceList>
+                            <Button onClick={()=>navigate('/contactus')}>Contat Us</Button>
                         </Card>
                     ))}
                 </CardGrid>
             </Wrapper>
 
-            <Elements stripe={stripePromise}>
-                <BookingModal
-                    open={modalOpen}
-                    service={selectedService}
-                    onClose={closeModal}
-                    onSuccess={handleSuccess}
-                />
-            </Elements>
+          
         </Section>
     );
 };

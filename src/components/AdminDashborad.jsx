@@ -236,6 +236,7 @@ import ManageServices from './ManageServices.jsx';
 import ImageManager from './GalleryImageManager.jsx';
 import GalleryImageManager from './GalleryImageManager.jsx';
 import ServicesImageManager from './ServicesImageManager.jsx';
+import ManageVariableServices from './ManageVariableServices.jsx';
 
 // --- Light Theme Colors ---
 const lightColors = {
@@ -430,6 +431,9 @@ const theme = useSelector(state=>state.theme)
          case 'manageservices':
         return <ManageServices />;
 
+           case 'managevariableservices':
+        return <ManageVariableServices />;
+
          case 'manageblogs':
         return <ManageBlogs />;
 
@@ -491,7 +495,15 @@ const theme = useSelector(state=>state.theme)
             active={activeMenu === 'manageservices'}
             onClick={() => handleMenuClick('manageservices')}
           >
-            Manage Services
+            Manage Fixed Services
+          </SidebarMenuItem>
+
+          
+           <SidebarMenuItem
+            active={activeMenu === 'managevariableservices'}
+            onClick={() => handleMenuClick('managevariableservices')}
+          >
+            Manage Variable Services
           </SidebarMenuItem>
 
           <SidebarMenuItem

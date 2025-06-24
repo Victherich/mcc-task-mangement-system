@@ -166,3 +166,9 @@ const ContextProvider = ({ children }) => {
 };
 
 export default ContextProvider;
+
+
+
+// paypal payment test acount
+// email: sb-i43rw634801674@personal.example.com
+// pw: [%5/YuRk

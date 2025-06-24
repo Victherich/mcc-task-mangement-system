@@ -300,7 +300,7 @@ const ManageServices = () => {
   return (
     <PageContainer>
       <HeaderContainer>
-        <Title>{showForm ? (editingService ? 'Edit Service' : 'Create New Service') : 'Manage Services'}</Title>
+        <Title>{showForm ? (editingService ? 'Edit Service' : 'Create New Service') : 'Manage Fixed Services'}</Title>
         {!showForm && (
           <AddButton onClick={() => setShowForm(true)}>
             + Add New Service

@@ -14,6 +14,7 @@ import { useLocation } from 'react-router-dom'
 import Events from './Events'
 import Services from './Services'
 import Gallery from './Gallery'
+import VideoGallery from './VideoGallery'
 
 const LandingPage = () => {
   const location = useLocation();
@@ -41,14 +42,17 @@ const LandingPage = () => {
 
 
   return (
-    reRender&&<div>
+    <div>
       <Hero/>
       <AboutUsBrief/>
     
           
       {/* <AboutComponent/> */}
+  
       <Impact/>
       {/* <Events/> */}
+
+          <VideoGallery/>v
       <Services/>
       <Gallery/>
       {/* <GetInvolved/> */}
