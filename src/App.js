@@ -30,10 +30,12 @@ import AdminResetPassword from './components/AdminResetPassword';
 import GoogleTranslate from './components/GoogleTranslate';
 import BookingPage from './components/BookingPage';
 
+
 function App() {
   return (
-   
+ 
     <BrowserRouter>
+      <HostingExpiryGuard/>
     <GoogleTranslate/>
      <AppUpdate/>
     <ScrollToTop/>

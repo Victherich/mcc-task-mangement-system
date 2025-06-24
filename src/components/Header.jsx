@@ -154,7 +154,7 @@ const rotateAnimation = keyframes`
 
 
 const HeaderWrap = styled.header`
-  position: fixed;
+  position: sticky;
   top: 0;
   left: 0;
   width: 100%;
