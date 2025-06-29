@@ -6,8 +6,14 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import Swal from "sweetalert2";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../firebaseConfig"; // Ensure this path is correct
+import { auth, db } from "../firebaseConfig"; // Ensure this path is correct
 import { onAuthStateChanged } from 'firebase/auth';
+import { doc, getDoc } from "firebase/firestore";
+
+
+
+
+
 
 // --- Light Theme Colors for Login ---
 const lightLoginColors = {
@@ -23,7 +29,7 @@ const lightLoginColors = {
   buttonBackground: '#119458',    // Accent blue for buttons
   buttonText: '#FFFFFF',          // White text on button
   buttonHover: '#3A7DCF',         // Darker blue for button hover
-  registerText: '#5C6F8D',        // Muted blue-gray for register text
+  registerText: 'green',        // Muted blue-gray for register text
   registerHover: '#4A90E2',       // Accent blue for register text hover
 };
 
@@ -101,6 +107,7 @@ const RegisterText = styled.p`
   cursor: pointer;
   text-align: center;
   font-size: 0.95rem; /* Slightly smaller for subtlety */
+ text-decoration: underline;
 
   &:hover {
     text-decoration: underline;
@@ -137,6 +144,54 @@ const AdminLogin = () => {
       Swal.fire("Login Failed ❌", error.message, "error");
     }
   };
+
+
+// const handleLogin = async (e) => {
+
+//  e.preventDefault();
+
+//     Swal.fire({
+//       title: "Please wait...",
+//       text: "Logging in...",
+//       allowOutsideClick: false,
+//       didOpen: () => Swal.showLoading(),
+//     });
+
+
+
+
+
+//   try {
+//     const userCredential = await signInWithEmailAndPassword(auth, form.email, form.password);
+//     const user = userCredential.user;
+
+//     const userDocRef = doc(db, "admins", user.uid); // or "admins"
+//     const userSnap = await getDoc(userDocRef);
+
+//     if (!userSnap.exists()) {
+//       throw new Error("No user role found in Firestore.");
+//     }
+
+//     const data = userSnap.data();
+    
+//     // Store role in session/local storage
+//     localStorage.setItem("role", data.role);
+//     Swal.close();
+//     // Redirect based on role
+//     if (data.role === "admin") {
+//       navigate("/admindashboard");
+//     } else {
+//       navigate("/userdashboard");
+//     }
+//   } catch (error) {
+//     Swal.fire("Login Failed", error.message, "error");
+//   }
+// };
+
+
+
+
+
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -195,9 +250,9 @@ const AdminLogin = () => {
 
           <Button type="button" onClick={()=>navigate('/')}>Home</Button>
         </form>
-        {/* <RegisterText onClick={() => navigate("/adminforgotpassword")}>
+        <RegisterText onClick={() => navigate("/adminforgotpassword")}>
           Forgot Password
-        </RegisterText> */}
+        </RegisterText>
 
       </FormWrapper>
     </Container>

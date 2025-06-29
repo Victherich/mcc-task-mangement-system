@@ -24,5 +24,35 @@ const PrivateAdminDashboard = () => {
   return authenticated ? <Outlet /> : <Navigate to="/adminlogin" />;
 };
 
+
+
+
+
+
+
+// // Admin guard
+// const PrivateAdminDashboard = () => {
+//   const [loading, setLoading] = useState(true);
+//   const [authorized, setAuthorized] = useState(false);
+
+//   useEffect(() => {
+//     onAuthStateChanged(auth, (user) => {
+//       const role = localStorage.getItem("role");
+//       setAuthorized(user && role === "admin");
+//       setLoading(false);
+//     });
+//   }, []);
+
+//   if (loading) return <p>Loading...</p>;
+
+//   return authorized ? <Outlet /> : <Navigate to="/adminlogin" />;
+// };
+
+
+
+
+
+
+
 export default PrivateAdminDashboard;
 

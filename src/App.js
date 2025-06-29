@@ -32,6 +32,8 @@ import PrivateUserDashboard from './components/PrivateUserDashboard';
 import UserLogin from './components/UserLogin';
 import UserSignup from './components/UserSignUp';
 import UserDashboard from './components/UserDashboard';
+import UserForgotPassword from './components/UserForgotPassword';
+import UserResetPassword from './components/UserResetPassword';
 
 
 function App() {
@@ -65,7 +67,7 @@ function App() {
         <Route path='/adminlogin' element={<AdminLogin/>}/>
         {/* <Route path='/adminsignup' element={<AdminSignup/>}/> */}
         <Route path='/adminforgotpassword' element={<AdminForgotPassword/>}/>
-        <Route path='/adminresetpassword' element={<AdminResetPassword/>}/>
+        {/* <Route path='/adminresetpassword' element={<AdminResetPassword/>}/> */}
 
 
 
@@ -78,8 +80,8 @@ function App() {
         </Route>
         <Route path='/userlogin' element={<UserLogin/>}/>
         {/* <Route path='/usersignup' element={<UserSignup/>}/> */}
-        <Route path='/adminforgotpassword' element={<AdminForgotPassword/>}/>
-        <Route path='/adminresetpassword' element={<AdminResetPassword/>}/>
+        <Route path='/userforgotpassword' element={<UserForgotPassword/>}/>
+        <Route path='/userresetpassword' element={<UserResetPassword/>}/>
 
 
 

@@ -212,8 +212,10 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import Swal from "sweetalert2";
-import { db } from "../firebaseConfig"; // Make sure this exports your Firestore instance
+import { db , auth} from "../firebaseConfig"; // Make sure this exports your Firestore instance
 import { collection, query, where, getDocs } from "firebase/firestore";
+import { doc, getDoc } from "firebase/firestore";
+import { signInWithEmailAndPassword } from "firebase/auth";
 
 // -- Styling (unchanged) --
 const lightLoginColors = {
@@ -366,6 +368,49 @@ const UserLogin = () => {
 
 
 
+// const handleLogin = async (e) => {
+
+//  e.preventDefault();
+
+//     Swal.fire({
+//       title: "Please wait...",
+//       text: "Logging in...",
+//       allowOutsideClick: false,
+//       didOpen: () => Swal.showLoading(),
+//     });
+
+
+
+
+
+//   try {
+//     const userCredential = await signInWithEmailAndPassword(auth, form.email, form.password);
+//     const user = userCredential.user;
+
+//     const userDocRef = doc(db, "users", user.uid); // or "admins"
+//     const userSnap = await getDoc(userDocRef);
+
+//     if (!userSnap.exists()) {
+//       throw new Error("No user role found in Firestore.");
+//     }
+
+//     const data = userSnap.data();
+    
+//     // Store role in session/local storage
+//     localStorage.setItem("role2", data.role);
+
+//     Swal.close();
+//     // Redirect based on role
+//     if (data.role === "admin") {
+//       navigate("/admindashboard");
+//     } else {
+//       navigate("/userdashboard");
+//     }
+//   } catch (error) {
+//     Swal.fire("Login Failed", error.message, "error");
+//   }
+// };
+
 
 
   return (
@@ -398,6 +443,9 @@ const UserLogin = () => {
             Home
           </Button>
         </form>
+          <RegisterText onClick={() => navigate("/userforgotpassword")}>
+          Forgot Password
+        </RegisterText>
       </FormWrapper>
     </Container>
   );
