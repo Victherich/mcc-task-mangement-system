@@ -1,180 +1,6 @@
 
 
 
-// import React, { useState, useEffect } from "react";
-// import { useNavigate } from "react-router-dom";
-// import styled from "styled-components";
-// import Swal from "sweetalert2";
-// import { signInWithEmailAndPassword } from "firebase/auth";
-// import { auth } from "../firebaseConfig";
-// import { onAuthStateChanged } from 'firebase/auth';
-
-
-// const Container = styled.div`
-//   display: flex;
-//   flex-direction: column;
-//   align-items: center;
-//   justify-content: center;
-//   min-height: 100vh;
-//   padding: 2rem;
-//   background-color: #111827;
-// `;
-
-// const FormWrapper = styled.div`
-//   background: linear-gradient(to bottom right, #1f2937, #374151);
-//   border: 1px solid #4b5563;
-//   border-radius: 16px;
-//   padding: 2rem;
-//   width: 100%;
-//   max-width: 500px;
-//   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-// `;
-
-// const Title = styled.h2`
-//   color: #facc15;
-//   text-align: center;
-//   margin-bottom: 1.5rem;
-//   font-size: 2rem;
-// `;
-
-// const Label = styled.label`
-//   display: block;
-//   font-weight: 600;
-//   margin-bottom: 0.5rem;
-//   color: #d1d5db;
-// `;
-
-// const Input = styled.input`
-//   width: 100%;
-//   padding: 0.75rem;
-//   background-color: #111827;
-//   color: white;
-//   border: 2px solid #4b5563;
-//   border-radius: 8px;
-//   margin-bottom: 1rem;
-//   font-size: 1rem;
-
-//   &:focus {
-//     border-color: #facc15;
-//     outline: none;
-//   }
-// `;
-
-// const Button = styled.button`
-//   width: 100%;
-//   background: #facc15;
-//   color: #000;
-//   padding: 0.75rem;
-//   font-size: 1rem;
-//   border: none;
-//   border-radius: 10px;
-//   font-weight: 600;
-//   cursor: pointer;
-//   transition: background-color 0.3s;
-
-//   &:hover {
-//     background-color: #fde047;
-//   }
-// `;
-
-// const RegisterText = styled.p`
-//   color: #d1d5db;
-//   margin-top: 10px;
-//   cursor: pointer;
-//   text-align: center;
-
-//   &:hover {
-//     text-decoration: underline;
-//     color: #facc15;
-//   }
-// `;
-
-// const AdminLogin = () => {
-//   const navigate = useNavigate();
-//     const [loading, setLoading] = useState(true);
-//     const [authenticated, setAuthenticated] = useState(false);
-//   const [form, setForm] = useState({ email: "", password: "" });
-
-//   const handleChange = (e) => {
-//     setForm({ ...form, [e.target.name]: e.target.value });
-//   };
-
-//   const handleLogin = async (e) => {
-//     e.preventDefault();
-
-//     Swal.fire({
-//       title: "Please wait...",
-//       text: "Logging in...",
-//       allowOutsideClick: false,
-//       didOpen: () => Swal.showLoading(),
-//     });
-
-//     try {
-//       const { email, password } = form;
-//       const userCredential = await signInWithEmailAndPassword(auth, email, password);
-//       Swal.fire("Success ✅", "Logged in successfully", "success");
-//       navigate("/admindashboard");
-//     } catch (error) {
-//       Swal.fire("Login Failed ❌", error.message, "error");
-//     }
-//   };
-
-
-//     useEffect(() => {
-//       const unsubscribe = onAuthStateChanged(auth, (user) => {
-//         setAuthenticated(!!user); // true if user is logged in
-//         setLoading(false);
-//       });
-  
-//       return () => unsubscribe(); // Cleanup listener on unmount
-//     }, []);
-
-
-//     if(authenticated){
-//       navigate('/admindashboard');
-//       return;
-//     }
-
-
-
-
-
-//   return (
-//     <Container>
-//       <FormWrapper>
-//         <Title>Admin Login</Title>
-//         <form onSubmit={handleLogin}>
-//           <Label>Email</Label>
-//           <Input
-//             type="email"
-//             name="email"
-//             value={form.email}
-//             onChange={handleChange}
-//             required
-//           />
-//           <Label>Password</Label>
-//           <Input
-//             type="password"
-//             name="password"
-//             value={form.password}
-//             onChange={handleChange}
-//             required
-//           />
-//           <Button type="submit">Login</Button>
-//         </form>
-//         <RegisterText onClick={() => navigate("/adminsignup")}>
-//           Don't have an account? Register
-//         </RegisterText>
-//       </FormWrapper>
-//     </Container>
-//   );
-// };
-
-// export default AdminLogin;
-
-
-
-
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
@@ -262,6 +88,7 @@ const Button = styled.button`
   font-weight: 600;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  margin-bottom:10px;
 
   &:hover {
     background-color: ${lightLoginColors.buttonHover}; /* Darker blue on hover */
@@ -365,6 +192,8 @@ const AdminLogin = () => {
             required
           />
           <Button type="submit">Login</Button>
+
+          <Button type="button" onClick={()=>navigate('/')}>Home</Button>
         </form>
         {/* <RegisterText onClick={() => navigate("/adminforgotpassword")}>
           Forgot Password

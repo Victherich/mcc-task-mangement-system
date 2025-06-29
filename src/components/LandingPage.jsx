@@ -44,21 +44,21 @@ const LandingPage = () => {
   return (
     <div>
       <Hero/>
-      <AboutUsBrief/>
+      {/* <AboutUsBrief/> */}
     
           
       {/* <AboutComponent/> */}
   
-      <Impact/>
+      {/* <Impact/> */}
       {/* <Events/> */}
 
-          <VideoGallery/>v
-      <Services/>
-      <Gallery/>
+          {/* <VideoGallery/> */}
+      {/* <Services/> */}
+      {/* <Gallery/> */}
       {/* <GetInvolved/> */}
       
       {/* <Hero2/> */}
-      <Testimonials/>
+      {/* <Testimonials/> */}
       {/* <News/> */}
       {/* <FAQ/> */}
     </div>

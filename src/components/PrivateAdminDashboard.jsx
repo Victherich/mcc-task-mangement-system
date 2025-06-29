@@ -1,20 +1,3 @@
-// import React, { useContext, useState } from 'react'
-// import AdminDashborad from './AdminDashborad'
-// import { Navigate,Outlet } from 'react-router-dom'
-// import { Context } from './Context'
-
-
-// const PrivateAdminDashboard = () => {
-   
-
-    
-//   return (
-//    adminToken?<Outlet/>:<Navigate to="/adminlogin"/>
-//   )
-// }
-
-// export default PrivateAdminDashboard
-
 
 
 import React, { useEffect, useState } from 'react';

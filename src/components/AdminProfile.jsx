@@ -7,6 +7,7 @@ import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { doc, getDoc, updateDoc } from 'firebase/firestore';
 import { db } from '../firebaseConfig'; // adjust path as needed
 import Swal from 'sweetalert2';
+import { signOut } from 'firebase/auth';
 
 // --- Light Theme Colors for Profile ---
 const lightProfileColors = {
@@ -140,25 +141,53 @@ const AdminProfile = () => {
   const [phone, setPhone] = useState('');
   const [isEditing, setIsEditing] = useState(false);
 
-  useEffect(() => {
-    const auth = getAuth();
-    const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
-      if (currentUser) {
-        setUser(currentUser);
-        // Fetch phone number from Firestore if available
-        const docRef = doc(db, 'admins', currentUser.uid);
-        const docSnap = await getDoc(docRef);
-        if (docSnap.exists()) {
-          setPhone(docSnap.data().phone || '');
-        }
-      } else {
-        setUser(null); // Clear user if not authenticated
-        setPhone('');
-      }
-    });
 
-    return () => unsubscribe();
-  }, []);
+
+
+
+
+
+useEffect(() => {
+  const auth = getAuth();
+  const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
+    if (currentUser) {
+      const docRef = doc(db, 'admins', currentUser.uid);
+      const docSnap = await getDoc(docRef);
+
+      // // ❌ Logout if admin doc doesn't exist OR role is not "admin"
+      // if (!docSnap.exists() || docSnap.data().role !== 'admin') {
+      //   // await signOut(auth);
+      //   // Optional: show alert
+      //   Swal.fire({
+      //     icon: 'warning',
+      //     title: 'Access Denied',
+      //     text: 'You are trying to access the Admin dashboard , please click ok to logout from Staff dashboard and try again',
+      //     allowOutsideClick:false,
+      //   }).then((result)=>{
+      //       if (result.isConfirmed){
+      //            signOut(auth);
+      //       }
+      // })
+        
+      //   ;
+      //   return;
+      // }
+
+      // ✅ If valid admin
+      const adminData = docSnap.data();
+      setUser(currentUser);
+      setPhone(adminData.phone || '');
+    } else {
+      setUser(null);
+      setPhone('');
+    }
+  });
+
+  return () => unsubscribe();
+}, []);
+
+
+
 
   const handlePhoneSave = async () => {
     if (!user) return; // Ensure user is logged in

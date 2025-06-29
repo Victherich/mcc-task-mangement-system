@@ -136,15 +136,15 @@ const Footer = () => {
   </SocialLinks>
 
       {/* Footer Links */}
-      <FooterLinks>
+      {/* <FooterLinks>
       <a href="/">Home</a>
         <a href="/aboutus">About Us</a>
-        {/* <a href="/services">Services</a> */}
+
         <a href="/gallery">Gallery</a>
   
         <a href="/blogs">Blogs</a>
         <a href="/contactus">Contact Us</a>
-      </FooterLinks>
+      </FooterLinks> */}
 
       {/* Copyright */}
       <Copyright>&copy; 2025 Matthew car wash and cleaning. All rights reserved.</Copyright>

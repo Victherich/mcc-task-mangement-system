@@ -7,8 +7,35 @@ import heroVideo1 from "../Images3/h3.mp4";
 import heroVideo3 from "../Images3/h4.mp4";
 import heroVideo4 from "../Images3/h1.mp4";
 import herobg from '../Images3/333.jpg'
+import logo from '../Images3/MCCLOGO.png'
+import {useNavigate} from 'react-router-dom'
 
 // Styled Components
+// const HeroContainer = styled.section`
+//   position: relative;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   height: 100vh;
+//   text-align: center;
+//   overflow: hidden;
+//   background-image:url(${herobg});
+//   background-size:cover;
+//   background-position:center;
+//   padding-top:60px;
+
+//   video {
+//     position: absolute;
+//     top: 0;
+//     left: 0;
+//     width: 100%;
+//     height: 100%;
+//     object-fit: cover;
+//   }
+// `;
+
+
+
 const HeroContainer = styled.section`
   position: relative;
   display: flex;
@@ -17,10 +44,21 @@ const HeroContainer = styled.section`
   height: 100vh;
   text-align: center;
   overflow: hidden;
-  background-image:url(${herobg});
-  background-size:cover;
-  background-position:center;
-  padding-top:60px;
+  background-image: url(${herobg});
+  background-size: cover;
+  background-position: center;
+  // padding-top: 60px;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3); /* Transparent black */
+    z-index: 1;
+  }
 
   video {
     position: absolute;
@@ -29,8 +67,17 @@ const HeroContainer = styled.section`
     width: 100%;
     height: 100%;
     object-fit: cover;
+    z-index: 0;
+  }
+
+  /* Ensure content appears above the overlay */
+  > * {
+    position: relative;
+    z-index: 2;
   }
 `;
+
+
 
 // Text Container
 const HeroText = styled.div`
@@ -128,10 +175,38 @@ const HeroSubtitle = styled.p`
   }
 `;
 
+const ButtonWrap = styled.div`
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:20px;
+  margin-top:30px;
+`
+
+const Button = styled.button`
+  padding:10px;
+  border-radius:10px;
+  color:white;
+  background:green;
+  border:none;
+  cursor:pointer;
+  width:150px;
+  font-weight:bold;
+  font-size:1.2rem;
+
+  &:hover{
+    color:green;
+    border:1px solid green;
+    background:white;
+  }
+
+`
+
 // Hero Component
 const Hero = () => {
   const heroRef = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
+  const navigate = useNavigate();
 
   // Intersection Observer to detect when the section is in view
   useEffect(() => {
@@ -167,7 +242,7 @@ const Hero = () => {
 
   return (
     <HeroContainer ref={heroRef}>
-      {count===0&&<video autoPlay muted loop>
+      {/* {count===0&&<video autoPlay muted loop>
         <source src={heroVideo} type="video/mp4" />
       </video>}
       {count===1&&<video autoPlay muted loop>
@@ -181,13 +256,26 @@ const Hero = () => {
       </video>}
       {count===4&&<video autoPlay muted loop>
         <source src={heroVideo4} type="video/mp4" />
-      </video>}
+      </video>} */}
 
       <HeroText>
-        <HeroTitle isVisible={isVisible}>MATTHEW CAR WASH <br/>AND CLEANING [MCC] </HeroTitle>
+        <img src={logo} alt="logo" style={{width:"100px", borderRadius:"50%", height:"100px"}}/>
+        {/* <HeroTitle isVisible={isVisible}>MATTHEW CAR WASH <br/>AND CLEANING [MCC] </HeroTitle> */}
+         <HeroTitle isVisible={isVisible}> [MCC] </HeroTitle>
+
+          <HeroTitle isVisible={isVisible}>Task Management System</HeroTitle>
         {/* <HeroTitle2 isVisible={isVisible}>AFRICAN JOURNAL OF GENERAL AGRICULTURE</HeroTitle2> */}
         
         <HeroSubtitle isVisible={isVisible}>"Keeping safe environments"</HeroSubtitle>
+
+        <ButtonWrap>
+          <Button onClick={()=>navigate('/userdashboard')}>
+            Staff
+          </Button>
+          <Button onClick={()=>navigate('/admindashboard')} >
+            Admin
+          </Button>
+        </ButtonWrap>
     
       </HeroText>
     </HeroContainer>

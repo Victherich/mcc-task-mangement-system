@@ -26,9 +26,12 @@ import AdminDashboard from './components/AdminDashborad';
 import PrivateAdminDashboard from './components/PrivateAdminDashboard';
 import AdminForgotPassword from './components/AdminForgotPassword';
 import AdminResetPassword from './components/AdminResetPassword';
-
 import GoogleTranslate from './components/GoogleTranslate';
 import BookingPage from './components/BookingPage';
+import PrivateUserDashboard from './components/PrivateUserDashboard';
+import UserLogin from './components/UserLogin';
+import UserSignup from './components/UserSignUp';
+import UserDashboard from './components/UserDashboard';
 
 
 function App() {
@@ -40,7 +43,7 @@ function App() {
      <AppUpdate/>
     <ScrollToTop/>
     <Header/>
-    <Menu/>
+    {/* <Menu/> */}
       <Routes>
         <Route path='/' element={<LandingPage/>}/>
         <Route path='/contactus' element={<ContactUs/>}/>
@@ -63,6 +66,22 @@ function App() {
         {/* <Route path='/adminsignup' element={<AdminSignup/>}/> */}
         <Route path='/adminforgotpassword' element={<AdminForgotPassword/>}/>
         <Route path='/adminresetpassword' element={<AdminResetPassword/>}/>
+
+
+
+
+        
+   {/* user routes */}
+
+     <Route path='/userdashboard' element={<PrivateUserDashboard/>}>
+          <Route path='' element={<UserDashboard/>}/>
+        </Route>
+        <Route path='/userlogin' element={<UserLogin/>}/>
+        {/* <Route path='/usersignup' element={<UserSignup/>}/> */}
+        <Route path='/adminforgotpassword' element={<AdminForgotPassword/>}/>
+        <Route path='/adminresetpassword' element={<AdminResetPassword/>}/>
+
+
 
 
 

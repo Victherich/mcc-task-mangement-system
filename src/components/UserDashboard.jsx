@@ -1,5 +1,6 @@
 
 
+
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { FaBars, FaTimes } from 'react-icons/fa';
@@ -8,7 +9,7 @@ import { auth } from '../firebaseConfig'; // Ensure this path is correct
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2'; // Assuming you have SweetAlert2 installed
 import AdminSignup from './AdminSignUp.jsx'; // Ensure this path is correct
-import AdminProfile from './AdminProfile.jsx'; // Ensure this path is correct
+import UserProfile from './UserProfile.jsx'; // Ensure this path is correct
 import { toggleTheme } from '../Features/Slice.jsx';
 // import { use } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -20,9 +21,7 @@ import ImageManager from './GalleryImageManager.jsx';
 import GalleryImageManager from './GalleryImageManager.jsx';
 import ServicesImageManager from './ServicesImageManager.jsx';
 import ManageVariableServices from './ManageVariableServices.jsx';
-import UserSignup from './UserSignUp.jsx';
-import ManageUsers from './ManageUsers.jsx';
-import TaskManager from './TaskManager.jsx';
+import MyTasks from './MyTasks.jsx';
 
 // --- Light Theme Colors ---
 const lightColors = {
@@ -157,42 +156,42 @@ const Overlay = styled.div`
 `;
 
 // Main Component
-const AdminDashboard = () => {
+const UserDashboard = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeMenu, setActiveMenu] = useState('profile');
   const navigate = useNavigate();
 const dispatch = useDispatch();
 const theme = useSelector(state=>state.theme)
 
+const handleLogout = () => {
+  Swal.fire({
+    title: 'Are you sure you want to log out?',
+    text: 'You will need to log in again to access your account.',
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: lightColors.accent, // Use accent color for confirm button
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Yes, log me out',
+  }).then((result) => {
+    if (result.isConfirmed) {
+      try {
+        localStorage.removeItem("user");
 
-  const handleLogout = () => {
-    Swal.fire({
-      title: 'Are you sure you want to log out?',
-      text: 'You will need to log in again to access your account.',
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: lightColors.accent, // Use accent color for confirm button
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, log me out',
-    }).then((result) => {
-      if (result.isConfirmed) {
-        signOut(auth)
-          .then(() => {
-            Swal.fire({
-              title: 'Logged Out',
-              text: 'You have been logged out successfully.',
-              icon: 'success',
-              timer: 2000,
-              showConfirmButton: false,
-            });
-            navigate('/adminlogin'); // Redirect to admin login page after logout
-          })
-          .catch((error) => {
-            Swal.fire('Error', error.message, 'error');
-          });
+        Swal.fire({
+          title: 'Logged Out',
+          text: 'You have been logged out successfully.',
+          icon: 'success',
+          timer: 2000,
+          showConfirmButton: false,
+        });
+
+        navigate('/userlogin'); // Redirect to login page
+      } catch (error) {
+        Swal.fire('Error', error.message, 'error');
       }
-    });
-  };
+    }
+  });
+};
 
   const handleMenuClick = (menu) => {
  if (theme === false) { dispatch(toggleTheme())}
@@ -207,39 +206,14 @@ const theme = useSelector(state=>state.theme)
   const renderContent = () => {
     switch (activeMenu) {
       case 'profile':
-        return <AdminProfile />;
-      // Uncomment and ensure correct paths for these components when ready
-      case 'hostinglist':
-        return <HostingList />;
-      case 'transactionslist':
-        return <TransactionsList />;
+        return <UserProfile />;
 
-        //  case 'manageservices':
-        // return <ManageServices />;
-
-        //    case 'managevariableservices':
-        // return <ManageVariableServices />;
-
-        //  case 'manageblogs':
-        // return <ManageBlogs />;
-
-        //   case 'managegallery':
-        // return <GalleryImageManager />;
-
-        //  case 'servicesimagemanager':
-        // return <ServicesImageManager />;
- case 'managetasks':
-        return <TaskManager />;
-
-  case 'manageusers':
-        return <ManageUsers />;
+         case 'mytasks':
+        return <MyTasks />;
 
 
-           case 'usersignup':
-        return <UserSignup />;
 
-      case 'adminsignup':
-        return <AdminSignup />;
+
       default:
         // Default content for the dashboard home, styled for light mode
         return <h1 style={{ color: lightColors.mainText, textAlign: 'center', marginTop: '2rem' }}>Welcome to Your Admin Dashboard</h1>;
@@ -263,19 +237,30 @@ const theme = useSelector(state=>state.theme)
       </Hamburger>
       <Overlay isOpen={menuOpen} onClick={() => setMenuOpen(false)} />
       <Sidebar isOpen={menuOpen}>
-        <SidebarHeader onClick={()=>{if (theme === false) { dispatch(toggleTheme())}}}>Admin Dashboard</SidebarHeader>
+        <SidebarHeader onClick={()=>{if (theme === false) { dispatch(toggleTheme())}}}>Staff Dashboard</SidebarHeader>
         <SidebarMenu>
           <SidebarMenuItem
             active={activeMenu === 'profile'}
             onClick={() => handleMenuClick('profile')}
           >
-            Hi, Admin
+            Hi, User
           </SidebarMenuItem>
           {/* Uncomment these menu items when their components are implemented */}
           
-       
+          <SidebarMenuItem
+            active={activeMenu === 'mytasks'}
+            onClick={() => handleMenuClick('mytasks')}
+          >
+            My Tasks
+          </SidebarMenuItem>
+          {/* <SidebarMenuItem
+            active={activeMenu === 'transactionslist'}
+            onClick={() => handleMenuClick('transactionslist')}
+          >
+            My Transactions
+          </SidebarMenuItem>
 
-           {/* <SidebarMenuItem
+           <SidebarMenuItem
             active={activeMenu === 'manageservices'}
             onClick={() => handleMenuClick('manageservices')}
           >
@@ -311,27 +296,6 @@ const theme = useSelector(state=>state.theme)
             onClick={() => handleMenuClick('managegallery')}
           >
             Manage Gallery Images
-          </SidebarMenuItem> */}
-
-           <SidebarMenuItem
-            active={activeMenu === 'managetasks'}
-            onClick={() => handleMenuClick('managetasks')}
-          >
-            Manage Tasks
-          </SidebarMenuItem>
-
-            <SidebarMenuItem
-            active={activeMenu === 'manageusers'}
-            onClick={() => handleMenuClick('manageusers')}
-          >
-            Staffs
-          </SidebarMenuItem>
-
-           <SidebarMenuItem
-            active={activeMenu === 'usersignup'}
-            onClick={() => handleMenuClick('usersignup')}
-          >
-            Register Staff
           </SidebarMenuItem>
          
           <SidebarMenuItem
@@ -339,22 +303,7 @@ const theme = useSelector(state=>state.theme)
             onClick={() => handleMenuClick('adminsignup')}
           >
             Register Admin
-          </SidebarMenuItem>
-
-
-   <SidebarMenuItem
-            active={activeMenu === 'hostinglist'}
-            onClick={() => handleMenuClick('hostinglist')}
-          >
-            My Hostings
-          </SidebarMenuItem>
-          <SidebarMenuItem
-            active={activeMenu === 'transactionslist'}
-            onClick={() => handleMenuClick('transactionslist')}
-          >
-            My Transactions
-          </SidebarMenuItem>
-
+          </SidebarMenuItem> */}
           <SidebarMenuItem onClick={handleLogout}>Logout</SidebarMenuItem>
         </SidebarMenu>
       </Sidebar>
@@ -365,4 +314,4 @@ const theme = useSelector(state=>state.theme)
   );
 };
 
-export default AdminDashboard;
+export default UserDashboard;

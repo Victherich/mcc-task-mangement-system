@@ -282,13 +282,13 @@ import styled, { keyframes } from "styled-components";
 import p2 from '../Images3/p3.png'
 import { useNavigate } from "react-router-dom";
 import { Elements } from "@stripe/react-stripe-js";
-import { loadStripe } from "@stripe/stripe-js";
+// import { loadStripe } from "@stripe/stripe-js";
 import BookingModal from "./BookingPage"; // make sure this file exists
 import { db } from '../firebaseConfig'; // Import your Firestore instance
 import { collection, getDocs } from 'firebase/firestore'; // Import Firestore functions
 
 
-const stripePromise = loadStripe("pk_test_YOUR_PUBLIC_STRIPE_KEY"); // Replace with your actual key
+
 
 const float = keyframes`
   0% { transform: translateY(0); }

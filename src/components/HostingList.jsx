@@ -292,8 +292,8 @@ const HostingList = () => {
     const amountKobo = item.renewal_amount * 100;
     const paystack = new PaystackPop();
     paystack.newTransaction({
-        key: "pk_live_afb3375b9a770a5a332904dcf1a26e77c2a5f170", 
-      //  key: "pk_test_60e1f53bba7c80b60029bf611a26a66a9a22d4e4", 
+        // key: "pk_live_afb3375b9a770a5a332904dcf1a26e77c2a5f170", 
+       key: "pk_test_60e1f53bba7c80b60029bf611a26a66a9a22d4e4", 
       email: user.email,
       amount: amountKobo,
       metadata: { hostingId: item.id },

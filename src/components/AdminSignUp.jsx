@@ -131,6 +131,8 @@ const AdminSignup = () => {
     phone: "",
     password: "",
     confirmPassword: "",
+    role:"admin"
+  
   });
 
   const handleChange = (e) => {
@@ -158,7 +160,7 @@ const AdminSignup = () => {
     });
 
     try {
-      const { name, email, phone, password } = form;
+      const { name, email, phone, password , role} = form;
 
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
@@ -170,6 +172,7 @@ const AdminSignup = () => {
         name,
         email,
         phone,
+        role,
         createdAt: new Date(),
       });
 
