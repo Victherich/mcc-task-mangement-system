@@ -151,29 +151,8 @@ useEffect(() => {
   const auth = getAuth();
   const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
     if (currentUser) {
-      const docRef = doc(db, 'admins', currentUser.uid);
+      const docRef = doc(db, 'users', currentUser.uid);
       const docSnap = await getDoc(docRef);
-
-      // // ❌ Logout if admin doc doesn't exist OR role is not "admin"
-      // if (!docSnap.exists() || docSnap.data().role !== 'admin') {
-      //   // await signOut(auth);
-      //   // Optional: show alert
-      //   Swal.fire({
-      //     icon: 'warning',
-      //     title: 'Access Denied',
-      //     text: 'You are trying to access the Admin dashboard , please click ok to logout from Staff dashboard and try again',
-      //     allowOutsideClick:false,
-      //   }).then((result)=>{
-      //       if (result.isConfirmed){
-      //            signOut(auth);
-      //       }
-      // })
-        
-      //   ;
-      //   return;
-      // }
-
-      // ✅ If valid admin
       const adminData = docSnap.data();
       setUser(currentUser);
       setPhone(adminData.phone || '');
@@ -200,7 +179,7 @@ useEffect(() => {
     });
 
     try {
-      await updateDoc(doc(db, 'admins', user.uid), {
+      await updateDoc(doc(db, 'users', user.uid), {
         phone: phone,
       });
 
@@ -242,7 +221,7 @@ useEffect(() => {
           <Avatar>{user?.displayName?.charAt(0) || user?.email?.charAt(0) || 'U'}</Avatar> {/* Fallback to email initial */}
         </AvatarWrap>
 
-        <Heading>{user.displayName || 'Admin User'}</Heading> {/* Default display name */}
+        <Heading>{user.displayName || 'User'}</Heading> {/* Default display name */}
         <Text><Highlight>Email:</Highlight> {user.email}</Text>
 
         <PhoneWrapper>

@@ -23,6 +23,11 @@ import ManageVariableServices from './ManageVariableServices.jsx';
 import UserSignup from './UserSignUp.jsx';
 import ManageUsers from './ManageUsers.jsx';
 import TaskManager from './TaskManager.jsx';
+import { doc, getDoc, updateDoc } from 'firebase/firestore';
+import { db } from '../firebaseConfig'; // adjust path as needed
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import MyTasks from './MyTasks.jsx';
+
 
 // --- Light Theme Colors ---
 const lightColors = {
@@ -163,6 +168,29 @@ const AdminDashboard = () => {
   const navigate = useNavigate();
 const dispatch = useDispatch();
 const theme = useSelector(state=>state.theme)
+ const [user, setUser] = useState(null);
+
+ console.log(user)
+
+
+useEffect(() => {
+  const auth = getAuth();
+  const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
+    if (currentUser) {
+      const docRef = doc(db, 'users', currentUser.uid);
+      const docSnap = await getDoc(docRef);
+      const userData = docSnap.data();
+      setUser(userData);
+
+    } else {
+      setUser(null);
+
+    }
+  });
+
+  return () => unsubscribe();
+}, []);
+
 
 
   const handleLogout = () => {
@@ -185,7 +213,7 @@ const theme = useSelector(state=>state.theme)
               timer: 2000,
               showConfirmButton: false,
             });
-            navigate('/adminlogin'); // Redirect to admin login page after logout
+            navigate('/login'); // Redirect to admin login page after logout
           })
           .catch((error) => {
             Swal.fire('Error', error.message, 'error');
@@ -208,35 +236,21 @@ const theme = useSelector(state=>state.theme)
     switch (activeMenu) {
       case 'profile':
         return <AdminProfile />;
+
+            case 'mytasks':
+        return <MyTasks storedUserId={user.uid}/>;
+
       // Uncomment and ensure correct paths for these components when ready
       case 'hostinglist':
         return <HostingList />;
       case 'transactionslist':
         return <TransactionsList />;
 
-        //  case 'manageservices':
-        // return <ManageServices />;
-
-        //    case 'managevariableservices':
-        // return <ManageVariableServices />;
-
-        //  case 'manageblogs':
-        // return <ManageBlogs />;
-
-        //   case 'managegallery':
-        // return <GalleryImageManager />;
-
-        //  case 'servicesimagemanager':
-        // return <ServicesImageManager />;
  case 'managetasks':
         return <TaskManager />;
 
   case 'manageusers':
         return <ManageUsers />;
-
-
-           case 'usersignup':
-        return <UserSignup />;
 
       case 'adminsignup':
         return <AdminSignup />;
@@ -247,15 +261,6 @@ const theme = useSelector(state=>state.theme)
   };
 
 
-
-
-//  useEffect(() => {
-//   if (theme !== false) {
-//     dispatch(toggleTheme()); 
-//   }
-// }, []);
-
-
   return (
     <DashboardContainer>
       <Hamburger onClick={toggleMenu}>
@@ -263,97 +268,56 @@ const theme = useSelector(state=>state.theme)
       </Hamburger>
       <Overlay isOpen={menuOpen} onClick={() => setMenuOpen(false)} />
       <Sidebar isOpen={menuOpen}>
-        <SidebarHeader onClick={()=>{if (theme === false) { dispatch(toggleTheme())}}}>Admin Dashboard</SidebarHeader>
+        <SidebarHeader onClick={()=>{if (theme === false) { dispatch(toggleTheme())}}}>Dashboard</SidebarHeader>
         <SidebarMenu>
           <SidebarMenuItem
             active={activeMenu === 'profile'}
             onClick={() => handleMenuClick('profile')}
           >
-            Hi, Admin
-          </SidebarMenuItem>
-          {/* Uncomment these menu items when their components are implemented */}
-          
-       
-
-           {/* <SidebarMenuItem
-            active={activeMenu === 'manageservices'}
-            onClick={() => handleMenuClick('manageservices')}
-          >
-            Manage Fixed Services
-          </SidebarMenuItem>
-
-          
-           <SidebarMenuItem
-            active={activeMenu === 'managevariableservices'}
-            onClick={() => handleMenuClick('managevariableservices')}
-          >
-            Manage Variable Services
+            User Info
           </SidebarMenuItem>
 
           <SidebarMenuItem
-            active={activeMenu === 'servicesimagemanager'}
-            onClick={() => handleMenuClick('servicesimagemanager')}
+            active={activeMenu === 'mytasks'}
+            onClick={() => handleMenuClick('mytasks')}
           >
-            Manage Services Images
+            My Tasks
           </SidebarMenuItem>
 
-
-             <SidebarMenuItem
-            active={activeMenu === 'manageblogs'}
-            onClick={() => handleMenuClick('manageblogs')}
-          >
-            Manage Blogs
-          </SidebarMenuItem>
-
-
-          <SidebarMenuItem
-            active={activeMenu === 'managegallery'}
-            onClick={() => handleMenuClick('managegallery')}
-          >
-            Manage Gallery Images
-          </SidebarMenuItem> */}
-
-           <SidebarMenuItem
+           {user?.role==='admin'?<SidebarMenuItem
             active={activeMenu === 'managetasks'}
             onClick={() => handleMenuClick('managetasks')}
           >
             Manage Tasks
-          </SidebarMenuItem>
+          </SidebarMenuItem>:""}
 
-            <SidebarMenuItem
+            {user?.role==='admin'?<SidebarMenuItem
             active={activeMenu === 'manageusers'}
             onClick={() => handleMenuClick('manageusers')}
           >
             Staffs
-          </SidebarMenuItem>
-
-           <SidebarMenuItem
-            active={activeMenu === 'usersignup'}
-            onClick={() => handleMenuClick('usersignup')}
-          >
-            Register Staff
-          </SidebarMenuItem>
+          </SidebarMenuItem>:""}
          
-          <SidebarMenuItem
+         {user?.role==="admin"? <SidebarMenuItem
             active={activeMenu === 'adminsignup'}
             onClick={() => handleMenuClick('adminsignup')}
           >
-            Register Admin
-          </SidebarMenuItem>
+            Register Admin / Staff
+          </SidebarMenuItem>:""}
 
 
-   <SidebarMenuItem
+   {user?.role==="admin"?<SidebarMenuItem
             active={activeMenu === 'hostinglist'}
             onClick={() => handleMenuClick('hostinglist')}
           >
             My Hostings
-          </SidebarMenuItem>
-          <SidebarMenuItem
+          </SidebarMenuItem>:""}
+         {user?.role==='admin'? <SidebarMenuItem
             active={activeMenu === 'transactionslist'}
             onClick={() => handleMenuClick('transactionslist')}
           >
             My Transactions
-          </SidebarMenuItem>
+          </SidebarMenuItem>:""}
 
           <SidebarMenuItem onClick={handleLogout}>Logout</SidebarMenuItem>
         </SidebarMenu>

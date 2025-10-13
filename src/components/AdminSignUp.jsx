@@ -122,6 +122,40 @@ const LinkText = styled.p`
   }
 `;
 
+
+const Select = styled.select`
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 2px solid #119458;
+  background: #fff;
+  color: #0c5e36;
+  font-size: 1rem;
+  font-weight: 500;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 180px;
+  margin-bottom:20px;
+
+  &:hover {
+    border-color: #0c5e36;
+    box-shadow: 0 0 6px rgba(17, 148, 88, 0.3);
+  }
+
+  &:focus {
+    border-color: #0c5e36;
+    box-shadow: 0 0 6px rgba(17, 148, 88, 0.3);
+  }
+
+  option {
+    background: #fff;
+    color: #0c5e36;
+    font-weight: 500;
+  }
+`;
+
+
+
 const AdminSignup = () => {
   const navigate = useNavigate();
   const [form, setForm] = useState({
@@ -131,7 +165,7 @@ const AdminSignup = () => {
     phone: "",
     password: "",
     confirmPassword: "",
-    role:"admin"
+    role:""
   
   });
 
@@ -167,7 +201,7 @@ const AdminSignup = () => {
 
       await updateProfile(user, { displayName: name });
 
-      await setDoc(doc(db, "admins", user.uid), {
+      await setDoc(doc(db, "users", user.uid), {
         uid: user.uid,
         name,
         email,
@@ -177,7 +211,7 @@ const AdminSignup = () => {
       });
 
       Swal.fire("Success 🎉", "Account created successfully", "success");
-      navigate("/adminlogin");
+      navigate("/login");
 
       setForm({ // Clear form fields on successful registration
         name: "",
@@ -195,7 +229,7 @@ const AdminSignup = () => {
   return (
     <Container>
       <FormWrapper>
-        <Title>Register Admin</Title>
+        <Title>Register</Title>
         <form onSubmit={handleSubmit}>
           <Label htmlFor="fullName">Full Name</Label>
           <Input 
@@ -262,9 +296,20 @@ const AdminSignup = () => {
             placeholder="Confirm password"
             required
           />
+       <Select
+  name="role"
+  value={form.role}
+  onChange={handleChange}
+  required
+>
+  <option value="">-- Select Role --</option>
+  <option value="staff">Staff</option>
+  <option value="admin">Admin</option>
+</Select>
+
 
           <Button type="submit">Create Account</Button>
-          <LinkText onClick={() => navigate("/adminlogin")}>
+          <LinkText onClick={() => navigate("/login")}>
             Already have an account? Login
           </LinkText>
         </form>

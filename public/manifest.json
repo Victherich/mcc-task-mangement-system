@@ -1,6 +1,6 @@
 {
-  "short_name": "MATTHEW CAR WASH & CLEANING",
-  "name": "MATTHEW CAR WASH & CLEANING",
+  "short_name": "MACO TASK MANAGEMENT SYSTEM",
+  "name": "MACO TASK MANAGEMENT SYSTEM",
   "icons": [
     {
       "src": "favicon.ico",
@@ -8,12 +8,12 @@
       "type": "image/x-icon"
     },
     {
-      "src": "MCCLOGO.png",
+      "src": "logo.jpeg",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "MCCLOGO.png",
+      "src": "logo.jpeg",
       "type": "image/png",
       "sizes": "512x512"
     }

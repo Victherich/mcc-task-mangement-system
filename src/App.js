@@ -61,12 +61,12 @@ function App() {
 
    {/* Admin routes */}
 
-     <Route path='/admindashboard' element={<PrivateAdminDashboard/>}>
+     <Route path='/dashboard' element={<PrivateAdminDashboard/>}>
           <Route path='' element={<AdminDashboard/>}/>
         </Route>
-        <Route path='/adminlogin' element={<AdminLogin/>}/>
-        {/* <Route path='/adminsignup' element={<AdminSignup/>}/> */}
-        <Route path='/adminforgotpassword' element={<AdminForgotPassword/>}/>
+        <Route path='/login' element={<AdminLogin/>}/>
+        <Route path='/signup' element={<AdminSignup/>}/>
+        <Route path='/forgotpassword' element={<AdminForgotPassword/>}/>
         {/* <Route path='/adminresetpassword' element={<AdminResetPassword/>}/> */}
 
 

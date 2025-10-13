@@ -3,7 +3,7 @@
 
 import React from "react";
 import styled, { keyframes } from "styled-components";
-import logo from '../Images3/MCCLOGO.png'
+import logo from '../Images3/logo.jpeg'
 import { useLocation, useNavigate } from "react-router-dom";
 
 const gradientAnimation = keyframes`
@@ -155,7 +155,7 @@ const Header = () => {
     <HeaderWrap>
       <Logo src={logo} alt="Logo" onClick={()=>navigate('/')}/>
       <TitleContainer>
-        <Title>MCC TASK MANAGEMENT SYSTEM</Title>
+        <Title>MACO TASK MANAGEMENT SYSTEM</Title>
         {/* <MenuWrap>
           <p onClick={()=>navigate('/')} style={{textDecoration:location.pathname==='/'?"underline":"", textDecorationThickness:"3px"}}>HOME</p>
           <p onClick={()=>navigate('/aboutus')} style={{textDecoration:location.pathname==='/aboutus'?"underline":""}}>ABOUT</p>
@@ -166,7 +166,7 @@ const Header = () => {
         </MenuWrap> */}
         {/* <Subtitle>(FOR COMMUNITY DEVELOPMENT AND STABILITY)</Subtitle> */}
       </TitleContainer>
-      <Logo2 src={logo} alt="NGO Logo" onClick={()=>navigate('/')}/>
+      {/* <Logo2 src={logo} alt="NGO Logo" onClick={()=>navigate('/')}/> */}
     </HeaderWrap>
   );
 };

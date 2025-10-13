@@ -15,6 +15,7 @@ import Events from './Events'
 import Services from './Services'
 import Gallery from './Gallery'
 import VideoGallery from './VideoGallery'
+import QRCode2 from './QrCode'
 
 const LandingPage = () => {
   const location = useLocation();
@@ -46,7 +47,7 @@ const LandingPage = () => {
       <Hero/>
       {/* <AboutUsBrief/> */}
     
-          
+          <QRCode2/>
       {/* <AboutComponent/> */}
   
       {/* <Impact/> */}

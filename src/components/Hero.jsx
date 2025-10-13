@@ -269,10 +269,10 @@ const Hero = () => {
         <HeroSubtitle isVisible={isVisible}>"Keeping safe environments"</HeroSubtitle>
 
         <ButtonWrap>
-          <Button onClick={()=>navigate('/userdashboard')}>
+          <Button onClick={()=>navigate('/dashboard')}>
             Staff
           </Button>
-          <Button onClick={()=>navigate('/admindashboard')} >
+          <Button onClick={()=>navigate('/dashboard')} >
             Admin
           </Button>
         </ButtonWrap>

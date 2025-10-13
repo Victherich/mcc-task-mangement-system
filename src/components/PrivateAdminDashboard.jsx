@@ -21,7 +21,7 @@ const PrivateAdminDashboard = () => {
 
   if (loading) return <p>Loading...</p>;
 
-  return authenticated ? <Outlet /> : <Navigate to="/adminlogin" />;
+  return authenticated ? <Outlet /> : <Navigate to="/login" />;
 };
 
 

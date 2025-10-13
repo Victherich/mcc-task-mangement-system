@@ -139,7 +139,7 @@ const AdminLogin = () => {
       const { email, password } = form;
       await signInWithEmailAndPassword(auth, email, password); // No need to store userCredential if not used
       Swal.fire("Success ✅", "Logged in successfully", "success");
-      navigate("/admindashboard");
+      navigate("/dashboard");
     } catch (error) {
       Swal.fire("Login Failed ❌", error.message, "error");
     }
@@ -205,7 +205,7 @@ const AdminLogin = () => {
   // Redirect if already authenticated
   useEffect(() => {
     if (!loading && authenticated) { // Only redirect if not loading and is authenticated
-      navigate('/admindashboard');
+      navigate('/dashboard');
     }
   }, [authenticated, loading, navigate]); // Add navigate to dependency array
 
@@ -226,7 +226,7 @@ const AdminLogin = () => {
   return (
     <Container>
       <FormWrapper>
-        <Title>Admin Login</Title>
+        <Title>Login</Title>
         <form onSubmit={handleLogin}>
           <Label htmlFor="email">Email</Label>
           <Input
@@ -250,7 +250,7 @@ const AdminLogin = () => {
 
           <Button type="button" onClick={()=>navigate('/')}>Home</Button>
         </form>
-        <RegisterText onClick={() => navigate("/adminforgotpassword")}>
+        <RegisterText onClick={() => navigate("/forgotpassword")}>
           Forgot Password
         </RegisterText>
 
