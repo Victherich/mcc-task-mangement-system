@@ -7,7 +7,7 @@ import heroVideo1 from "../Images3/h3.mp4";
 import heroVideo3 from "../Images3/h4.mp4";
 import heroVideo4 from "../Images3/h1.mp4";
 import herobg from '../Images3/333.jpg'
-import logo from '../Images3/MCCLOGO.png'
+import logo from '../Images3/logo.jpeg'
 import {useNavigate} from 'react-router-dom'
 
 // Styled Components
@@ -261,7 +261,7 @@ const Hero = () => {
       <HeroText>
         <img src={logo} alt="logo" style={{width:"100px", borderRadius:"50%", height:"100px"}}/>
         {/* <HeroTitle isVisible={isVisible}>MATTHEW CAR WASH <br/>AND CLEANING [MCC] </HeroTitle> */}
-         <HeroTitle isVisible={isVisible}> [MCC] </HeroTitle>
+         <HeroTitle isVisible={isVisible}> [MACO] </HeroTitle>
 
           <HeroTitle isVisible={isVisible}>Task Management System</HeroTitle>
         {/* <HeroTitle2 isVisible={isVisible}>AFRICAN JOURNAL OF GENERAL AGRICULTURE</HeroTitle2> */}
@@ -270,11 +270,9 @@ const Hero = () => {
 
         <ButtonWrap>
           <Button onClick={()=>navigate('/dashboard')}>
-            Staff
+            Login
           </Button>
-          <Button onClick={()=>navigate('/dashboard')} >
-            Admin
-          </Button>
+      
         </ButtonWrap>
     
       </HeroText>

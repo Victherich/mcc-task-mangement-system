@@ -9,6 +9,7 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth, db } from "../firebaseConfig"; // Ensure this path is correct
 import { onAuthStateChanged } from 'firebase/auth';
 import { doc, getDoc } from "firebase/firestore";
+import ForgotPasswordModal from "./ForgotPasswordModal";
 
 
 
@@ -120,6 +121,7 @@ const AdminLogin = () => {
   const [loading, setLoading] = useState(true);
   const [authenticated, setAuthenticated] = useState(false);
   const [form, setForm] = useState({ email: "", password: "" });
+   const [showForgotPassword, setShowForgotPassword] = useState(false);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -249,12 +251,16 @@ const AdminLogin = () => {
           <Button type="submit">Login</Button>
 
           <Button type="button" onClick={()=>navigate('/')}>Home</Button>
+          
         </form>
-        <RegisterText onClick={() => navigate("/forgotpassword")}>
+        <RegisterText onClick={() => setShowForgotPassword(true)}>
           Forgot Password
         </RegisterText>
 
       </FormWrapper>
+         {showForgotPassword && (
+        <ForgotPasswordModal onClose={() => setShowForgotPassword(false)} />
+      )}
     </Container>
   );
 };
