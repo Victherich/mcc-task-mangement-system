@@ -35,14 +35,14 @@ const HeaderWrap = styled.header`
   left: 0;
   width: 100%;
   // background: #000080;
-  background: #119458;
+  background: #0CC1E0;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 2px 20px;
   padding-bottom:5px;
-  z-index: 1000;
+  z-index: 4;
  
 
 

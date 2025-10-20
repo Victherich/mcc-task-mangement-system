@@ -58,7 +58,7 @@ const FormWrapper = styled.div`
 `;
 
 const Title = styled.h2`
-  color: ${lightSignupColors.titleColor}; /* Accent blue for title */
+  color: #0CC1E0; /* Accent blue for title */
   text-align: center;
   margin-bottom: 1.5rem;
   font-size: 2rem; /* Consistent font size */
@@ -94,7 +94,7 @@ const Input = styled.input`
 
 const Button = styled.button`
   width: 100%;
-  background: ${lightSignupColors.buttonBackground}; /* Accent blue button */
+  background: #0CC1E0; /* Accent blue button */
   color: ${lightSignupColors.buttonText}; /* White text on button */
   padding: 0.75rem;
   font-size: 1rem;
@@ -126,7 +126,7 @@ const LinkText = styled.p`
 const Select = styled.select`
   padding: 10px 14px;
   border-radius: 8px;
-  border: 2px solid #119458;
+  border: 2px solid #0CC1E0;
   background: #fff;
   color: #0c5e36;
   font-size: 1rem;

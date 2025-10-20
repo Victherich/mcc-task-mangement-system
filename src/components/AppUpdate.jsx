@@ -57,9 +57,9 @@ const AppUpdate = () => {
           title: `This site has a new update by the Developer!`,
           text: `Kindly click the 'UPDATE" button to catch up`,
           icon: 'info',
-          showCancelButton: true,
+          // showCancelButton: true,
           confirmButtonText: 'Update',
-          cancelButtonText: 'Remind me later',
+          // cancelButtonText: 'Remind me later',
           allowOutsideClick: false, // Prevent closing by clicking outside
           allowEscapeKey: false,   // Prevent closing with ESC key
         }).then((result) => {
@@ -93,7 +93,7 @@ const AppUpdate = () => {
     fetchApps(true); // Check immediately on mount and show alert if needed
 
     // Set up interval for periodic checks (every 5 minutes)
-    const interval = setInterval(() => fetchApps(true), 5 * 60 * 1000); // 5 minutes
+    const interval = setInterval(() => fetchApps(true), 2 * 60 * 1000); // 5 minutes
 
     // Cleanup function to clear the interval when the component unmounts
     return () => clearInterval(interval);

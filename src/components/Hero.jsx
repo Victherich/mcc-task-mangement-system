@@ -187,7 +187,7 @@ const Button = styled.button`
   padding:10px;
   border-radius:10px;
   color:white;
-  background:green;
+  background:#0CC1E0;
   border:none;
   cursor:pointer;
   width:150px;

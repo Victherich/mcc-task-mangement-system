@@ -33,8 +33,8 @@ const Text = styled.p`
 `;
 
 const DeleteButton = styled.button`
-  background: gray;
-  color: #fff;
+  background: #FFDE59;
+  color: #222;
   padding: 0.4rem 0.8rem;
   border: none;
   border-radius: 4px;
@@ -42,7 +42,7 @@ const DeleteButton = styled.button`
   margin-top: 0.5rem;
 
   &:hover {
-    background: green;
+    background: #0CC1E0;
   }
 `;
 
@@ -128,7 +128,7 @@ fetchUsers()
 
   return (
     <Container>
-      <h2 style={{color:"#119458"}}>All Users</h2>
+      <h2 style={{color:"#0CC1E0"}}>All Users</h2>
       {users.length === 0 ? (
         <p>No users found.</p>
       ) : (

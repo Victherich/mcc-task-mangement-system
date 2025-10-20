@@ -7,7 +7,7 @@ import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedin } from 'react-icons/fa'
 
 // Styled Components
 const FooterContainer = styled.footer`
-   background: #119458;
+   background: #0CC1E0;
   color: white;
   padding: 40px 20px;
   text-align: center;
@@ -38,6 +38,10 @@ const FooterText = styled.p`
   color: white;
   // width:80%;
   text-align:center;
+
+  strong{
+  color:#FFDE59;
+  }
 `;
 
 const SocialLinks = styled.div`
@@ -80,7 +84,8 @@ const FooterLinks = styled.div`
 
 const Copyright = styled.p`
   font-size: 14px;
-  color: #e0e0e0;
+  // color: #e0e0e0;
+  color:#FFDE59;
   margin-top: 20px;
 `;
 
